@@ -8,16 +8,20 @@ class Game {
 
 	preload() {
 		this.backgroundImage = [
-			{ src: loadImage("./assets/bg/space-bg-tilable.png"), y: 0 },
-			{ src: loadImage("./assets/bg/space-bg-tilable.png"), y: 0 }
+			{ src: loadImage("../assets/bg/space-bg.png"), y: 0 }
 		]
 
-		// this.playerImage = loadImage(".player-image")
+		this.shipOrange = loadImage("../assets/ships/Spaceship_02_ORANGE.png")
+		this.shipGreen = loadImage("../assets/ships/Spaceship_03_GREEN.png")
+		this.shipRed = loadImage("../assets/ships/Spaceship_05_RED.png")
 	}
 
-	draw() {
+	draw(event) {
 		clear()
+		// let target = event.currentTarget
+		
 		this.background.draw()
 		// this.player.draw()
 	}
 }
+	

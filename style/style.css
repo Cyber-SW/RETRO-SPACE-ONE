@@ -7,3 +7,9 @@ body {
     background-color: #c8dad3;
     font-size: 20px;
 }
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
