@@ -9,7 +9,7 @@ class Game {
 	preload() {
 		this.backgroundImage = [
 			{ src: loadImage("./assets/bg/space-bg.png"), y: 0, speed: 1 },
-			{ src: loadImage("./assets/bg/space-bg-2a.png"), y: 0, speed: 1.5 }
+			{ src: loadImage("./assets/bg/space-bg-2.png"), y: 0, speed: 1.5 }
 		]
 
 		this.playerImage = [
