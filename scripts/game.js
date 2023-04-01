@@ -8,14 +8,14 @@ class Game {
 
 	preload() {
 		this.backgroundImage = [
-			{ src: loadImage("../assets/bg/space-bg.png"), y: 0, speed: 1 },
-			{ src: loadImage("../assets/bg/space-bg-2a.png"), y: 0, speed: 1.5 }
+			{ src: loadImage("./assets/bg/space-bg.png"), y: 0, speed: 1 },
+			{ src: loadImage("./assets/bg/space-bg-2a.png"), y: 0, speed: 1.5 }
 		]
 
 		this.playerImage = [
-			{ src: loadImage("../assets/ships/Spaceship_03_GREEN.png") },
-			{ src: loadImage("../assets/ships/Spaceship_05_RED.png") },
-			{ src: loadImage("../assets/ships/Spaceship_02_ORANGE.png") }
+			{ src: loadImage("./assets/ships/Spaceship_03_GREEN.png") },
+			{ src: loadImage("./assets/ships/Spaceship_05_RED.png") },
+			{ src: loadImage("./assets/ships/Spaceship_02_ORANGE.png") }
 		]
 	}
 

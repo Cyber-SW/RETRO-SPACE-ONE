@@ -1,20 +1,20 @@
 class Player {
 	constructor() {
-		this.width = 100
-		this.height = 140
+		this.width = 200
+		this.height = 280
 		this.x = 570
 		this.y = 1040 - this.height 
 		this.score = 0
 	}
 
 	draw() {
-        if (setup.buttonGreen) {
-		    image(game.playerImage[0], this.x, this.y, this.width, this.height)
-        } else if (setup.buttonRed) {
-            image(game.playerImage[1], this.x, this.y, this.width, this.height)
-        } else if (setup.buttonOrange) {
-            image(game.playerImage[2], this.x, this.y, this.width, this.height)
-        }  
+        if (buttonGreen.value() === "on") {
+            image(game.playerImage[0].src, this.x, this.y, this.width, this.height)
+        } else if (buttonRed.value() === "on") {
+            image(game.playerImage[1].src, this.x, this.y, this.width, this.height)
+        } else if (buttonOrange.value() === "on") {
+            image(game.playerImage[2].src, this.x, this.y, this.width, this.height)
+        }
 	}
 }
 

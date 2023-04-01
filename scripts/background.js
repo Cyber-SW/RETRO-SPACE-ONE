@@ -16,5 +16,6 @@ class Background {
 			// When the image leaves the screen we set it to the starting position
 			if (height <= img.y) img.y = 0
 		})
+		console.log(game.backgroundImage)
 	}
 }
