@@ -8,7 +8,7 @@ class Background {
 		// image(game.backgroundImages[4].src, 0, 0, width, height)
 
 		game.backgroundImage.forEach(function (img) {
-			img.y += 2
+			img.y += img.speed
 			image(img.src, 0, img.y, width, height)
 			// Here we add a second image
 			image(img.src, 0, img.y -height, width, height)
