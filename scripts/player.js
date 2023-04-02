@@ -3,7 +3,8 @@ class Player {
 		this.width = 200
 		this.height = 280
 		this.x = 570 - this.width / 2
-		this.y = 1100 - this.height 
+		this.y = 1100 - this.height
+        this.health = 5 
 		this.score = 0
 	}
 
