@@ -11,11 +11,6 @@ class Smallenemy {
 
     draw() {
         this.y += this.velocity
-        image(this.image, this.x, this.y, this.width, this.height)    
-        
-        
-        // game.smallEnemy.forEach(function(enemy) {
-        //     enemy.draw()
-        // })
+        image(this.image, this.x, this.y, this.width, this.height)
     }
 }

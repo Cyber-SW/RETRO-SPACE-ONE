@@ -9,6 +9,13 @@ class Player {
 	}
 
 	draw() {
+
+        // console.log(buttonGreen.value())
+        // console.log(buttonRed.value())
+        // console.log(buttonOrange.value())
+
+
+
         if (buttonGreen.value() === "on") {
             image(game.playerImage[0].src, this.x, this.y, this.width, this.height)
         } else if (buttonRed.value() === "on") {
@@ -32,6 +39,18 @@ class Player {
 		if (keyIsDown(83)) {
 			if (this.y < height - this.height) this.moveDown()
 		}
+
+        if (keyIsDown(32) && buttonGreen.value() === "on") {
+            if (frameCount % 5 === 0) this.useWeaponGreen()
+        }
+
+        if (keyIsDown(32) && buttonRed.value() === "on") {
+            // this.useWeaponRed()
+        }
+
+        if (keyIsDown(32) && buttonOrange.value() === "on") {
+            this.useWeaponOrange()
+        }
 	}
 
     moveRight() {
@@ -49,5 +68,26 @@ class Player {
 	moveDown() {
 		this.y += 10
 	}
+    
+    useWeaponGreen() {
+        let playerPositionX = this.x
+        let playerPositionY = this.y
+
+        game.playerWeaponGreen.forEach(function(bullet) {
+            game.weaponGreenBulletsLeft.push(new WeaponGreenLeft(bullet.src, playerPositionX, playerPositionY))
+        })
+
+        game.playerWeaponGreen.forEach(function(bullet) {
+            game.weaponGreenBulletsRight.push(new WeaponGreenRight(bullet.src, playerPositionX, playerPositionY))
+        })
+    }
+
+    useWeaponRed() {
+
+    }
+
+    useWeaponOrange() {
+        
+    }
 }
 
