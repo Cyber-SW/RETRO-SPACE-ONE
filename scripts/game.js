@@ -3,14 +3,20 @@ class Game {
 		this.background = new Background()
 		this.player = new Player()
 		// this.weapon = new Weapon()
+		
 		this.smallEnemy = []
 		this.bigEnemy = []
+
 		this.weaponGreenBulletsLeft = []
-		this.weaponGreenBulletsRight = []  
+		this.weaponGreenBulletsRight = []
+
+		this.weaponOrangeBulletsLeft = []
+
 		this.backgroundImage
 		this.playerImage
 		this.enemyImage
 		this.playerWeaponGreen
+		
 		// this.explosionImage
 	}
 	
@@ -32,8 +38,9 @@ class Game {
 		]
 
 		this.playerWeaponGreen = [
-			{ src: loadImage("./assets/weapons/green/shot1_4.png"), }
+			{ src: loadImage("./assets/weapons/green/shot1_4.png") }
 		]
+
 
 		// this.explosionImage = [
 		// 	{ src: loadImage("image")}
@@ -59,6 +66,20 @@ class Game {
 		this.weaponGreenBulletsRight.forEach(function(bullet) {
 			bullet.draw()
 		})
+
+		this.weaponOrangeBulletsLeft.forEach(function(bullet) {
+			bullet.draw()
+		})
+console.log(this.weaponOrangeBulletsLeft)
+		this.weaponOrangeBulletsLeft = this.weaponOrangeBulletsLeft.filter((bullet) => {
+            if (frameCount > bullet.startFrame + 50) {
+				console.log(bullet.image)
+				bullet.image.remove()
+                return false
+            } else {
+                return true
+            }
+        })
 		
 		this.player.draw()
 

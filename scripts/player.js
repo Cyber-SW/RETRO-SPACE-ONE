@@ -49,7 +49,7 @@ class Player {
         }
 
         if (keyIsDown(32) && buttonOrange.value() === "on") {
-            this.useWeaponOrange()
+            if (frameCount % 80 === 0 ) this.useWeaponOrange()
         }
 	}
 
@@ -83,11 +83,22 @@ class Player {
     }
 
     useWeaponRed() {
-
+        
     }
 
     useWeaponOrange() {
+        console.log("useweapon")
+        let playerPositionX = this.x
+        let playerPositionY = this.y
+
+        const playerWeaponOrange = [
+			{ src: createImg("./assets/weapons/orange/flamethrower.gif", "flamethrower") }
+		]
         
+        playerWeaponOrange.forEach(function(bullet) {
+            game.weaponOrangeBulletsLeft.push(new WeaponOrangeLeft(bullet.src, playerPositionX, playerPositionY, frameCount))
+        })
+        console.log(game.weaponOrangeBulletsLeft)
     }
 }
 
