@@ -12,6 +12,20 @@ class WeaponGreenLeft {
         this.y -= this.velocity
         image(this.image, this.x, this.y, this.width, this.height)
     }
+
+    bulletCollision(smallEnemyInfo) { 
+        
+        let smallEnemyX = smallEnemyInfo.x + smallEnemyInfo.width /2
+        let smallEnemyY = smallEnemyInfo.y + smallEnemyInfo.height /2
+        let bulletX = this.x + this.width / 2
+        let bulletY = this.y + this.height / 2
+
+        if (dist(smallEnemyX, smallEnemyY, bulletX, bulletY) > 25) {
+            return false
+        } else {
+            return true
+        }
+    }
 }
 
 class WeaponGreenRight {
@@ -26,13 +40,27 @@ class WeaponGreenRight {
     
     draw() {
         this.y -= this.velocity
-        image(this.image, this.x, this.y, this.width, this.height)
+        image(this.image, this.x, this.y, this.width, this.height) 
+    }
+
+    bulletCollision(smallEnemyInfo) { 
+        
+        let smallEnemyX = smallEnemyInfo.x + smallEnemyInfo.width /2
+        let smallEnemyY = smallEnemyInfo.y + smallEnemyInfo.height /2
+        let bulletX = this.x + this.width / 2
+        let bulletY = this.y + this.height / 2
+
+        if (dist(smallEnemyX, smallEnemyY, bulletX, bulletY) > 25) {
+            return false
+        } else {
+            return true
+        }
     }
 }
 
 class WeaponOrangeLeft {
-    constructor(image, playerPositionX, playerPositionY, frameCount) {
-        this.image = image
+    constructor(playerPositionX, playerPositionY, frameCount) {
+        this.image = createImg("./assets/weapons/orange/flamethrower.gif", "flamethrower")
         this.x = playerPositionX + 205
 		this.y = playerPositionY - 50
         this.width = 350

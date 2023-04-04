@@ -7,9 +7,8 @@ class Player {
         this.health = 5 
 		this.score = 0
 	}
-
+    
 	draw() {
-
         // console.log(buttonGreen.value())
         // console.log(buttonRed.value())
         // console.log(buttonOrange.value())
@@ -49,7 +48,7 @@ class Player {
         }
 
         if (keyIsDown(32) && buttonOrange.value() === "on") {
-            if (frameCount % 80 === 0 ) this.useWeaponOrange()
+            this.useWeaponOrange()
         }
 	}
 
@@ -91,13 +90,8 @@ class Player {
         let playerPositionX = this.x
         let playerPositionY = this.y
 
-        const playerWeaponOrange = [
-			{ src: createImg("./assets/weapons/orange/flamethrower.gif", "flamethrower") }
-		]
-        
-        playerWeaponOrange.forEach(function(bullet) {
-            game.weaponOrangeBulletsLeft.push(new WeaponOrangeLeft(bullet.src, playerPositionX, playerPositionY, frameCount))
-        })
+        game.weaponOrangeBulletsLeft.push(new WeaponOrangeLeft(playerPositionX, playerPositionY, frameCount))
+
         console.log(game.weaponOrangeBulletsLeft)
     }
 }

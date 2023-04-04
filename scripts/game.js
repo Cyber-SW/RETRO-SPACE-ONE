@@ -58,7 +58,9 @@ class Game {
 		this.smallEnemy.forEach(function(enemy) {
             enemy.draw()
         })
-		
+
+		// GREEN SHIP WEAPON
+
 		this.weaponGreenBulletsLeft.forEach(function(bullet) {
 			bullet.draw()
 		})
@@ -67,13 +69,32 @@ class Game {
 			bullet.draw()
 		})
 
+		this.weaponGreenBulletsLeft.forEach((bullet, bulletIndex) => {
+			this.smallEnemy.forEach((smallEnemy, smallEnemyIndex) => {
+				if (bullet.bulletCollision(smallEnemy)) {
+					this.weaponGreenBulletsLeft.splice(bulletIndex, 1)
+					this.smallEnemy.splice(smallEnemyIndex, 1)
+				}
+			})
+		})
+
+		this.weaponGreenBulletsRight.forEach((bullet, bulletIndex) => {
+			this.smallEnemy.forEach((smallEnemy, smallEnemyIndex) => {
+				if (bullet.bulletCollision(smallEnemy)) {
+					this.weaponGreenBulletsRight.splice(bulletIndex, 1)
+					this.smallEnemy.splice(smallEnemyIndex, 1)
+				}
+			})
+		})
+
+		// ORANGE SHIP WEAPON
+
 		this.weaponOrangeBulletsLeft.forEach(function(bullet) {
 			bullet.draw()
 		})
-console.log(this.weaponOrangeBulletsLeft)
+
 		this.weaponOrangeBulletsLeft = this.weaponOrangeBulletsLeft.filter((bullet) => {
-            if (frameCount > bullet.startFrame + 50) {
-				console.log(bullet.image)
+            if (frameCount > bullet.startFrame + 70) {
 				bullet.image.remove()
                 return false
             } else {
