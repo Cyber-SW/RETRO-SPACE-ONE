@@ -13,8 +13,7 @@ class WeaponGreenLeft {
         image(this.image, this.x, this.y, this.width, this.height)
     }
 
-    bulletCollision(smallEnemyInfo) { 
-        
+    bulletCollision(smallEnemyInfo) {
         let smallEnemyX = smallEnemyInfo.x + smallEnemyInfo.width /2
         let smallEnemyY = smallEnemyInfo.y + smallEnemyInfo.height /2
         let bulletX = this.x + this.width / 2
@@ -50,7 +49,7 @@ class WeaponGreenRight {
         let bulletX = this.x + this.width / 2
         let bulletY = this.y + this.height / 2
 
-        if (dist(smallEnemyX, smallEnemyY, bulletX, bulletY) > 25) {
+        if (dist(smallEnemyX, smallEnemyY, bulletX, bulletY) > 40) {
             return false
         } else {
             return true

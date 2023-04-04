@@ -94,5 +94,29 @@ class Player {
 
         console.log(game.weaponOrangeBulletsLeft)
     }
+
+    playerCollision(smallEnemyInfo) { 
+        let smallEnemyX = smallEnemyInfo.x + smallEnemyInfo.width /2
+        let smallEnemyY = smallEnemyInfo.y + smallEnemyInfo.height /2
+        let playerX = this.x + this.width / 2
+        let playerY = this.y + this.height / 2
+
+        if (dist(smallEnemyX, smallEnemyY, playerX, playerY) > 100) {
+            return false
+        } else {
+            return true
+        }
+    }
+
+    playerScore() {
+        let displayScore = `Score: ${this.score}`
+
+        text(displayScore, 1080, 60)
+        textFont(orbitronBlack)
+        fill(255, 255, 255)
+        textAlign(RIGHT, BASELINE)
+        textSize(32)
+    }
 }
+
 

@@ -17,7 +17,7 @@ class Game {
 		this.enemyImage
 		this.playerWeaponGreen
 		
-		// this.explosionImage
+		this.explosionImage
 	}
 	
 	preload() {
@@ -41,10 +41,20 @@ class Game {
 			{ src: loadImage("./assets/weapons/green/shot1_4.png") }
 		]
 
-
-		// this.explosionImage = [
-		// 	{ src: loadImage("image")}
-		// ]
+		this.explosionImage = [
+			{ src: loadImage("../assets/explosions/Ship2_Explosion/Ship2_Explosion_000.png") },
+			{ src: loadImage("../assets/explosions/Ship2_Explosion/Ship2_Explosion_004.png") },
+			{ src: loadImage("../assets/explosions/Ship2_Explosion/Ship2_Explosion_005.png") },
+			{ src: loadImage("../assets/explosions/Ship2_Explosion/Ship2_Explosion_008.png") },
+			{ src: loadImage("../assets/explosions/Ship2_Explosion/Ship2_Explosion_009.png") },
+			{ src: loadImage("../assets/explosions/Ship2_Explosion/Ship2_Explosion_010.png") },
+			{ src: loadImage("../assets/explosions/Ship2_Explosion/Ship2_Explosion_013.png") },
+			{ src: loadImage("../assets/explosions/Ship2_Explosion/Ship2_Explosion_014.png") },
+			{ src: loadImage("../assets/explosions/Ship2_Explosion/Ship2_Explosion_015.png") },
+			{ src: loadImage("../assets/explosions/Ship2_Explosion/Ship2_Explosion_016.png") },
+			{ src: loadImage("../assets/explosions/Ship2_Explosion/Ship2_Explosion_019.png") },
+			{ src: loadImage("../assets/explosions/Ship2_Explosion/Ship2_Explosion_021.png") }
+		]
 	}
 
 	draw() {
@@ -52,7 +62,7 @@ class Game {
 		this.background.draw()
 
 		if (frameCount % 90 === 0) {
-            this.smallEnemy.push(new Smallenemy(this.enemyImage[0].src))
+            this.smallEnemy.push(new Smallenemy(this.enemyImage[0].src, this.explosionImage))
         }
 
 		this.smallEnemy.forEach(function(enemy) {
@@ -73,7 +83,14 @@ class Game {
 			this.smallEnemy.forEach((smallEnemy, smallEnemyIndex) => {
 				if (bullet.bulletCollision(smallEnemy)) {
 					this.weaponGreenBulletsLeft.splice(bulletIndex, 1)
-					this.smallEnemy.splice(smallEnemyIndex, 1)
+					this.smallEnemy[smallEnemyIndex].health -= 1
+					if (smallEnemy.health <= 0 && smallEnemy.initialDeadFrameCount < frameCount + 12) {
+						this.smallEnemy.splice(smallEnemyIndex, 1)
+						this.player.score += 100
+					}
+				}
+				if (bullet.y < -100) {
+					this.weaponGreenBulletsLeft.splice(bulletIndex, 1)
 				}
 			})
 		})
@@ -82,7 +99,14 @@ class Game {
 			this.smallEnemy.forEach((smallEnemy, smallEnemyIndex) => {
 				if (bullet.bulletCollision(smallEnemy)) {
 					this.weaponGreenBulletsRight.splice(bulletIndex, 1)
-					this.smallEnemy.splice(smallEnemyIndex, 1)
+					this.smallEnemy[smallEnemyIndex].health -= 1
+					if (smallEnemy.health <= 0 && smallEnemy.initialDeadFrameCount < frameCount + 12) {
+						this.smallEnemy.splice(smallEnemyIndex, 1)
+						this.player.score += 100
+					}
+				}
+				if (bullet.y < -100) {
+					this.weaponGreenBulletsRight.splice(bulletIndex, 1)
 				}
 			})
 		})
@@ -102,8 +126,21 @@ class Game {
             }
         })
 		
-		this.player.draw()
+		// PLAYER COLLISION
 
+		this.smallEnemy.forEach((smallEnemy, smallEnemyIndex) => {
+			if (this.player.playerCollision(smallEnemy)) {
+				this.smallEnemy.splice(smallEnemyIndex, 1)
+				this.player.health -= 1
+				console.log(this.player.health)
+				if (this.player.health <= 0) {
+					// remove player stop game and show losing screen
+				}
+			}
+		})
+
+		this.player.draw()
+		this.player.playerScore()
 	}
 }
 

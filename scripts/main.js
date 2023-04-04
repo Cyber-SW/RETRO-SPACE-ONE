@@ -4,6 +4,7 @@ let gameStarted = false
 // Load game assets
 function preload() {
 	game.preload()
+	orbitronBlack = loadFont("../assets/font/Orbitron-Black.ttf")
 }
 
 let buttonGreen
