@@ -55,13 +55,28 @@ class Game {
 			{ src: loadImage("../assets/explosions/Ship2_Explosion/Ship2_Explosion_019.png") },
 			{ src: loadImage("../assets/explosions/Ship2_Explosion/Ship2_Explosion_021.png") }
 		]
+
+		this.playerExplosionImage = [
+			{ src: loadImage("../assets/explosions/player-explosion/Explosion3_1.png") },
+			{ src: loadImage("../assets/explosions/player-explosion/Explosion3_2.png") },
+			{ src: loadImage("../assets/explosions/player-explosion/Explosion3_3.png") },
+			{ src: loadImage("../assets/explosions/player-explosion/Explosion3_4.png") },
+			{ src: loadImage("../assets/explosions/player-explosion/Explosion3_5.png") },
+			{ src: loadImage("../assets/explosions/player-explosion/Explosion3_6.png") },
+			{ src: loadImage("../assets/explosions/player-explosion/Explosion3_7.png") },
+			{ src: loadImage("../assets/explosions/player-explosion/Explosion3_8.png") },
+			{ src: loadImage("../assets/explosions/player-explosion/Explosion3_9.png") },
+			{ src: loadImage("../assets/explosions/player-explosion/Explosion3_10.png") },
+			{ src: loadImage("../assets/explosions/player-explosion/Explosion3_11.png") },
+			{ src: loadImage("../assets/explosions/player-explosion/Explosion3_12.png") }
+		]
 	}
 
 	draw() {
 		clear()
 		this.background.draw()
 
-		if (frameCount % 90 === 0) {
+		if (gameStarted && frameCount % 90 === 0) {
             this.smallEnemy.push(new Smallenemy(this.enemyImage[0].src, this.explosionImage))
         }
 
@@ -132,10 +147,6 @@ class Game {
 			if (this.player.playerCollision(smallEnemy)) {
 				this.smallEnemy.splice(smallEnemyIndex, 1)
 				this.player.health -= 1
-				console.log(this.player.health)
-				if (this.player.health <= 0) {
-					// remove player stop game and show losing screen
-				}
 			}
 		})
 

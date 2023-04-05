@@ -4,63 +4,95 @@ let gameStarted = false
 // Load game assets
 function preload() {
 	game.preload()
+	// lobbyMusic = loadSound("..loadmusic")
 	orbitronBlack = loadFont("../assets/font/Orbitron-Black.ttf")
 }
 
-let buttonGreen
-let buttonRed
-let buttonOrange
+const buttonStart = document.querySelector(".start-btn-show")
+buttonStart.addEventListener("click", createGame)
+const headlineStart = document.querySelector(".headline-container")
+
+const buttonContainer = document.querySelector(".btn-container-hide")
+const chooseShipContainer = document.querySelector(".choose-ship-container-hide")
+
+let buttonGreen = document.querySelector(".btn-green")
+buttonGreen.addEventListener("click", shipGreen)
+let buttonRed = document.querySelector(".btn-red")
+buttonRed.addEventListener("click", shipRed)
+let buttonOrange = document.querySelector(".btn-orange")
+buttonOrange.addEventListener("click", shipOrange)
+
+const buttonLosingsreenContainer = document.querySelector(".losingscreen-container-hide")
+const buttonLosingscreen = document.querySelector(".btn-losingscreen")
+buttonLosingscreen.addEventListener("click", createNewGame)
+
 
 // Setup game
 function setup() {
 	createCanvas(1140, 1140)
-	
-	buttonGreen = createButton("choose green", "off")
-	buttonGreen.position(1000, 570)
-	buttonGreen.mousePressed(shipGreen)
+}
 
-	buttonRed = createButton("choose red", "off")
-	buttonRed.position(1100, 570)
-	buttonRed.mousePressed(shipRed)
+function createGame() {
+	buttonStart.classList.toggle("start-btn-hide")
+	headlineStart.classList.toggle("headline-container-hide")
 
-	buttonOrange = createButton("choose orange", "off")
-	buttonOrange.position(1200, 570)
-	buttonOrange.mousePressed(shipOrange)
+	buttonContainer.classList.remove("btn-container-hide")
+	buttonContainer.classList.toggle("btn-container-show")
+
+	chooseShipContainer.classList.remove("choose-ship-container-hide")
+	chooseShipContainer.classList.toggle("choose-ship-container-show")
+}
+
+function createNewGame() {
+
 }
 
 function shipGreen() {
-	buttonGreen = buttonGreen.value("on")
+	chooseShipContainer.classList.remove("choose-ship-container-show")
+	chooseShipContainer.classList.toggle("choose-ship-container-hide")
+	buttonContainer.classList.remove("btn-container-show")
+	buttonContainer.classList.toggle("btn-container-hide")
+
+	buttonGreen = "on"
+
 	gameStarted = true
 	if (gameStarted) draw()
-	
 }
 
 function shipRed() {
-	buttonRed = buttonRed.value("on")
+	chooseShipContainer.classList.remove("choose-ship-container-show")
+	chooseShipContainer.classList.toggle("choose-ship-container-hide")
+	buttonContainer.classList.remove("btn-container-show")
+	buttonContainer.classList.toggle("btn-container-hide")
+
+	buttonRed = "on"
+
 	gameStarted = true
 	if (gameStarted) draw()
-	
 }
 
 function shipOrange() {
-	buttonOrange = buttonOrange.value("on")
+	chooseShipContainer.classList.remove("choose-ship-container-show")
+	chooseShipContainer.classList.toggle("choose-ship-container-hide")
+	buttonContainer.classList.remove("btn-container-show")
+	buttonContainer.classList.toggle("btn-container-hide")
+
+	buttonOrange = "on"
+
 	gameStarted = true
 	if (gameStarted) draw()
-	
 }
 
-function draw() {	
-	if (gameStarted === true) {
-		loop()
-		buttonGreen.hide()
-		buttonRed.hide()
-		buttonOrange.hide()
-	} else if (gameStarted === false) {
-		noLoop()
-		buttonGreen.show()
-		buttonRed.show()
-		buttonOrange.show()
-	}
+function displayLosingScreen() {
+	buttonLosingsreenContainer.classList.remove("losingscreen-container-hide")
+	buttonLosingsreenContainer.classList.toggle("losingscreen-container-show")
 
+	let showFinalScore = document.querySelector(".show-final-score")
+	showFinalScore = game.player.score
+
+	document.querySelector(".show-final-score").innerText = `${showFinalScore}`
+}
+
+function draw() {
 	game.draw()	
 }

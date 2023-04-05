@@ -4,7 +4,7 @@ class Player {
 		this.height = 280
 		this.x = 570 - this.width / 2
 		this.y = 1100 - this.height
-        this.health = 5 
+        this.health = 1 
 		this.score = 0
 	}
     
@@ -15,11 +15,11 @@ class Player {
 
 
 
-        if (buttonGreen.value() === "on") {
+        if (buttonGreen === "on") {
             image(game.playerImage[0].src, this.x, this.y, this.width, this.height)
-        } else if (buttonRed.value() === "on") {
+        } else if (buttonRed === "on") {
             image(game.playerImage[1].src, this.x, this.y, this.width, this.height)
-        } else if (buttonOrange.value() === "on") {
+        } else if (buttonOrange === "on") {
             image(game.playerImage[2].src, this.x, this.y, this.width, this.height)
         }
 
@@ -39,16 +39,31 @@ class Player {
 			if (this.y < height - this.height) this.moveDown()
 		}
 
-        if (keyIsDown(32) && buttonGreen.value() === "on") {
+        if (keyIsDown(32) && buttonGreen === "on") {
             if (frameCount % 5 === 0) this.useWeaponGreen()
         }
 
-        if (keyIsDown(32) && buttonRed.value() === "on") {
+        if (keyIsDown(32) && buttonRed === "on") {
             // this.useWeaponRed()
         }
 
-        if (keyIsDown(32) && buttonOrange.value() === "on") {
+        if (keyIsDown(32) && buttonOrange === "on") {
             this.useWeaponOrange()
+        }
+
+        if (this.health <= 0) {
+            image(game.playerExplosionImage[0].src, this.x, this.y, this.width, this.height)
+            if (frameCount % 2 === 0) { image(game.playerExplosionImage[1].src, this.x, this.y, this.width, this.height) }
+            if (frameCount % 3 === 0) { image(game.playerExplosionImage[2].src, this.x, this.y, this.width, this.height) }
+            if (frameCount % 4 === 0) { image(game.playerExplosionImage[3].src, this.x, this.y, this.width, this.height) }
+            if (frameCount % 5 === 0) { image(game.playerExplosionImage[4].src, this.x, this.y, this.width, this.height) }
+            if (frameCount % 6 === 0) { image(game.playerExplosionImage[5].src, this.x, this.y, this.width, this.height) }
+            if (frameCount % 7 === 0) { image(game.playerExplosionImage[6].src, this.x, this.y, this.width, this.height) }
+            if (frameCount % 8 === 0) { image(game.playerExplosionImage[7].src, this.x, this.y, this.width, this.height) }
+            if (frameCount % 9 === 0) { image(game.playerExplosionImage[8].src, this.x, this.y, this.width, this.height) }
+            if (frameCount % 10 === 0) { image(game.playerExplosionImage[9].src, this.x, this.y, this.width, this.height) }
+            if (frameCount % 11 === 0) { image(game.playerExplosionImage[10].src, this.x, this.y, this.width, this.height) }
+            if (frameCount % 12 === 0) { image(game.playerExplosionImage[11].src, this.x, this.y, this.width, this.height), this.playerDies(), noLoop() }
         }
 	}
 
@@ -100,7 +115,7 @@ class Player {
         let smallEnemyY = smallEnemyInfo.y + smallEnemyInfo.height /2
         let playerX = this.x + this.width / 2
         let playerY = this.y + this.height / 2
-
+        
         if (dist(smallEnemyX, smallEnemyY, playerX, playerY) > 100) {
             return false
         } else {
@@ -109,13 +124,23 @@ class Player {
     }
 
     playerScore() {
-        let displayScore = `Score: ${this.score}`
+        if (gameStarted) {
+            let displayScore = `Score: ${this.score}`
 
-        text(displayScore, 1080, 60)
-        textFont(orbitronBlack)
-        fill(255, 255, 255)
-        textAlign(RIGHT, BASELINE)
-        textSize(32)
+            text(displayScore, 1080, 60)
+            textFont(orbitronBlack)
+            fill(255, 255, 255)
+            textAlign(RIGHT, BASELINE)
+            textSize(32)
+        }
+    }
+
+    playerDies() {
+        if (this.health <= 0) {
+            gameStarted = false
+            displayLosingScreen()
+            loop()
+        }
     }
 }
 

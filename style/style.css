@@ -1,16 +1,178 @@
+@font-face {
+    font-family: "Obitron";
+    font-style: "black";
+    src: url(../assets/font/Orbitron-Black.ttf);
+}
+
+@keyframes start-btn-show {
+    0%   { opacity: 1; }
+    50%  { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+@keyframes btn-losingscreen {
+    0%   { opacity: 1; }
+    50%  { opacity: 0; }
+    100% { opacity: 1; }
+}
+
 body {
     display: flex;
     justify-content: center;
     flex-direction: column;
     align-items: center;
-    font-family: sans-serif;
     background-color: #c8dad3;
     font-size: 20px;
     overflow: hidden;
 }
 
-.container {
+.headline-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.headline-container-hide {
+    display: none;
+}
+
+.headline {
+    position: absolute;
+    top: 100px;
+    font-family: "Obitron";
+    color: white;
+    font-size: 100px;
+}
+
+.subline {
+    position: absolute;
+    top: 220px;
+    font-family: "Obitron";
+    color: white;
+    font-size: 80px;
+}
+
+.start-btn-show {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    margin-top: 350px;
+    opacity: 1;  
+    animation: start-btn-show 3s infinite;
+}
+
+.start-btn-show button {
+    font-family: "Obitron";
+    color: white;
+    background-color: transparent;
+    border: none;
+    font-size: 50px;
+    text-align: center;
+}
+
+.start-btn-hide {
+    display: none;
+}
+
+.btn-container-show {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    position: absolute;
+}
+
+.choose-ship-container-show {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 80px;
+    text-align: center;
+}
+
+.choose-ship-container-show h2 {
+    font-family: "Obitron";
+    color: white;
+    font-size: 50px;
+}
+
+.choose-ship-container-hide {
+    display: none;
+}
+
+.btn-container-show button {
+    font-family: "Obitron";
+    color: white;
+    border: none;
+    background-color: transparent;
+    font-size: 22px;
+    margin: 60px;
+    margin-top: 400px;
+    text-align: center;
+}
+
+.btn-container-hide {
+    display: none;
+}
+
+.btn-green {
     display: flex;
     justify-content: center;
     align-items: center;
 }
+
+.btn-red {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.btn-orange {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.losingscreen-container-show {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 100px;
+}
+
+.losingscreen-container-show h2 {
+    font-family: "Obitron";
+    color: white;
+    font-size: 80px;
+    text-align: center;
+}
+.losingscreen-container-show h3 {
+    font-family: "Obitron";
+    color: white;
+    font-size: 50px;
+    text-align: center;
+    margin-top: 50px;
+}
+
+.btn-losingscreen {
+    font-family: "Obitron";
+    color: white;
+    font-size: 50px;
+    border: none;
+    background-color: transparent;
+    margin-top: 225px;
+    text-align: center;
+    opacity: 1;  
+    animation: start-btn-show 3s infinite;
+}
+
+.losingscreen-container-hide {
+    display: none;
+}
+
+
