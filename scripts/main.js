@@ -1,11 +1,10 @@
-const game = new Game()
+let game = new Game()
 let gameStarted = false
+let music
 
 // Load game assets
 function preload() {
 	game.preload()
-	// lobbyMusic = loadSound("..loadmusic")
-	orbitronBlack = loadFont("../assets/font/Orbitron-Black.ttf")
 }
 
 const buttonStart = document.querySelector(".start-btn-show")
@@ -30,6 +29,9 @@ buttonLosingscreen.addEventListener("click", createNewGame)
 // Setup game
 function setup() {
 	createCanvas(1140, 1140)
+
+	orbitronBlack = loadFont("../assets/font/Orbitron-Black.ttf")
+	music = lobbyMusic = loadSound("../assets/music/Synthwave goose - Blade Runner 2049.mp3")
 }
 
 function createGame() {
@@ -41,10 +43,23 @@ function createGame() {
 
 	chooseShipContainer.classList.remove("choose-ship-container-hide")
 	chooseShipContainer.classList.toggle("choose-ship-container-show")
+
+	music.play()
 }
 
 function createNewGame() {
+	buttonLosingsreenContainer.classList.remove("losingscreen-container-show")
+	buttonLosingsreenContainer.classList.toggle("losingscreen-container-hide")
 
+	buttonContainer.classList.remove("btn-container-hide")
+	buttonContainer.classList.toggle("btn-container-show")
+
+	chooseShipContainer.classList.remove("choose-ship-container-hide")
+	chooseShipContainer.classList.toggle("choose-ship-container-show")
+
+	music.stop()
+	music.play()
+	game.player.score = 0
 }
 
 function shipGreen() {
@@ -54,6 +69,7 @@ function shipGreen() {
 	buttonContainer.classList.toggle("btn-container-hide")
 
 	buttonGreen = "on"
+	game.player.health = 4
 
 	gameStarted = true
 	if (gameStarted) draw()
@@ -66,6 +82,7 @@ function shipRed() {
 	buttonContainer.classList.toggle("btn-container-hide")
 
 	buttonRed = "on"
+	game.player.health = 7
 
 	gameStarted = true
 	if (gameStarted) draw()
@@ -78,6 +95,7 @@ function shipOrange() {
 	buttonContainer.classList.toggle("btn-container-hide")
 
 	buttonOrange = "on"
+	game.player.health = 5
 
 	gameStarted = true
 	if (gameStarted) draw()
@@ -94,5 +112,6 @@ function displayLosingScreen() {
 }
 
 function draw() {
-	game.draw()	
+	game.draw()
+
 }

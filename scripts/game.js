@@ -2,7 +2,6 @@ class Game {
 	constructor() {
 		this.background = new Background()
 		this.player = new Player()
-		// this.weapon = new Weapon()
 		
 		this.smallEnemy = []
 		this.bigEnemy = []
@@ -18,6 +17,13 @@ class Game {
 		this.playerWeaponGreen
 		
 		this.explosionImage
+		this.playerExplosionImage
+		this.playerHealthImage
+
+		this.soundeffects
+		
+		this.difficulty = 100
+		this.enemyVelocity = 2
 	}
 	
 	preload() {
@@ -39,6 +45,10 @@ class Game {
 
 		this.playerWeaponGreen = [
 			{ src: loadImage("./assets/weapons/green/shot1_4.png") }
+		]
+
+		this.playerWeaponOrange = [
+			{ src: loadImage("../assets") }
 		]
 
 		this.explosionImage = [
@@ -70,19 +80,39 @@ class Game {
 			{ src: loadImage("../assets/explosions/player-explosion/Explosion3_11.png") },
 			{ src: loadImage("../assets/explosions/player-explosion/Explosion3_12.png") }
 		]
+
+		this.playerHealthImage = [
+			{ src: loadImage("../assets/life/heart.png") }
+		]
+
+		this.soundeffects = [
+			{ src: loadSound("../assets/soundeffects/mixkit-short-laser-gun-shot-1670.wav") },
+			{ src: loadSound("../assets/soundeffects/Hitmarker - Sound Effect.mp3") }
+		]
 	}
 
 	draw() {
 		clear()
 		this.background.draw()
 
-		if (gameStarted && frameCount % 90 === 0) {
+		if (gameStarted && frameCount % this.difficulty === 0) {
             this.smallEnemy.push(new Smallenemy(this.enemyImage[0].src, this.explosionImage))
         }
 
 		this.smallEnemy.forEach(function(enemy) {
             enemy.draw()
         })
+
+		if (gameStarted && frameCount % 400 === 0) {
+			this.difficulty /= 2
+			this.enemyVelocity += 0.5
+		}
+
+		if (this.difficulty <= 10) {
+			this.difficulty = 10
+		}
+		console.log(this.difficulty)
+		console.log(this.enemyVelocity)
 
 		// GREEN SHIP WEAPON
 
@@ -101,6 +131,7 @@ class Game {
 					this.smallEnemy[smallEnemyIndex].health -= 1
 					if (smallEnemy.health <= 0 && smallEnemy.initialDeadFrameCount < frameCount + 12) {
 						this.smallEnemy.splice(smallEnemyIndex, 1)
+						game.soundeffects[1].src.play()
 						this.player.score += 100
 					}
 				}
@@ -117,6 +148,7 @@ class Game {
 					this.smallEnemy[smallEnemyIndex].health -= 1
 					if (smallEnemy.health <= 0 && smallEnemy.initialDeadFrameCount < frameCount + 12) {
 						this.smallEnemy.splice(smallEnemyIndex, 1)
+						game.soundeffects[1].src.play()
 						this.player.score += 100
 					}
 				}
@@ -142,16 +174,24 @@ class Game {
         })
 		
 		// PLAYER COLLISION
-
+		
 		this.smallEnemy.forEach((smallEnemy, smallEnemyIndex) => {
 			if (this.player.playerCollision(smallEnemy)) {
-				this.smallEnemy.splice(smallEnemyIndex, 1)
+				this.smallEnemy[smallEnemyIndex].health = 0
 				this.player.health -= 1
+				console.log(this.player.health)
+				if (smallEnemy.initialDeadFrameCount < frameCount + 12)
+				this.smallEnemy.splice(smallEnemyIndex, 1)
 			}
 		})
 
 		this.player.draw()
 		this.player.playerScore()
+		this.player.displayPlayerHealth()
+	}
+
+	play() {
+		this.soundeffects.src.setVolume(0.2)
 	}
 }
 

@@ -22,6 +22,7 @@ class WeaponGreenLeft {
         if (dist(smallEnemyX, smallEnemyY, bulletX, bulletY) > 25) {
             return false
         } else {
+            game.soundeffects[1].src.play()
             return true
         }
     }
@@ -58,8 +59,8 @@ class WeaponGreenRight {
 }
 
 class WeaponOrangeLeft {
-    constructor(playerPositionX, playerPositionY, frameCount) {
-        this.image = createImg("./assets/weapons/orange/flamethrower.gif", "flamethrower")
+    constructor(image, playerPositionX, playerPositionY) {
+        this.image = image
         this.x = playerPositionX + 205
 		this.y = playerPositionY - 50
         this.width = 350
