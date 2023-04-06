@@ -39,11 +39,13 @@ class Player {
         }
 
         if (keyIsDown(32) && buttonRed === "on") {
-            // this.useWeaponRed()
+            if (frameCount % 35 === 0) this.useWeaponRed()
+            if (frameCount % 35 === 0) game.soundeffects[3].src.play()
         }
 
         if (keyIsDown(32) && buttonOrange === "on") {
-            this.useWeaponOrange()
+            if (frameCount % 20 === 0) this.useWeaponOrange()
+            if (frameCount % 20 === 0) game.soundeffects[2].src.play()
         }
 
         if (this.health <= 0 && gameStarted === true) {
@@ -92,17 +94,37 @@ class Player {
     }
 
     useWeaponRed() {
-        
-    }
-
-    useWeaponOrange() {
-        console.log("useweapon")
         let playerPositionX = this.x
         let playerPositionY = this.y
 
-        game.weaponOrangeBulletsLeft.push(new WeaponOrangeLeft(playerPositionX, playerPositionY, frameCount))
+        game.playerWeaponRed.forEach(function(bullet) {
+            game.weaponRedBulletsLeft.push(new WeaponRedLeft(bullet.src, playerPositionX, playerPositionY))
+        })
 
-        console.log(game.weaponOrangeBulletsLeft)
+        game.playerWeaponRed.forEach(function(bullet) {
+            game.weaponRedBulletsRight.push(new WeaponRedRight(bullet.src, playerPositionX, playerPositionY))
+        })
+    }
+
+    useWeaponOrange() {
+        let playerPositionX = this.x
+        let playerPositionY = this.y
+
+        game.playerWeaponOrange.forEach(function(bullet) {
+            game.weaponOrangeBulletsLeft.push(new WeaponOrangeLeft(bullet.src, playerPositionX, playerPositionY))
+        })
+
+        game.playerWeaponOrange.forEach(function(bullet) {
+            game.weaponOrangeBulletsLeft2.push(new WeaponOrangeLeft2(bullet.src, playerPositionX, playerPositionY))
+        })
+
+        game.playerWeaponOrange.forEach(function(bullet) {
+            game.weaponOrangeBulletsRight.push(new WeaponOrangeRight(bullet.src, playerPositionX, playerPositionY))
+        })
+
+        game.playerWeaponOrange.forEach(function(bullet) {
+            game.weaponOrangeBulletsRight2.push(new WeaponOrangeRight2(bullet.src, playerPositionX, playerPositionY))
+        })
     }
 
     playerCollision(smallEnemyInfo) { 

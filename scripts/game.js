@@ -9,12 +9,20 @@ class Game {
 		this.weaponGreenBulletsLeft = []
 		this.weaponGreenBulletsRight = []
 
+		this.weaponRedBulletsLeft = []
+		this.weaponRedBulletsRight = []
+
 		this.weaponOrangeBulletsLeft = []
+		this.weaponOrangeBulletsLeft2 = []
+		this.weaponOrangeBulletsRight = []
+		this.weaponOrangeBulletsRight2 = []
 
 		this.backgroundImage
 		this.playerImage
 		this.enemyImage
 		this.playerWeaponGreen
+		this.playerWeaponRed
+		this.playerWeaponOrange
 		
 		this.explosionImage
 		this.playerExplosionImage
@@ -47,8 +55,12 @@ class Game {
 			{ src: loadImage("./assets/weapons/green/shot1_4.png") }
 		]
 
+		this.playerWeaponRed = [
+			{ src: loadImage("../assets/weapons/red/shot.png")}
+		]
+
 		this.playerWeaponOrange = [
-			{ src: loadImage("../assets") }
+			{ src: loadImage("../assets/weapons/orange/shot5_exp2.png") }
 		]
 
 		this.explosionImage = [
@@ -87,7 +99,9 @@ class Game {
 
 		this.soundeffects = [
 			{ src: loadSound("../assets/soundeffects/mixkit-short-laser-gun-shot-1670.wav") },
-			{ src: loadSound("../assets/soundeffects/Hitmarker - Sound Effect.mp3") }
+			{ src: loadSound("../assets/soundeffects/Hitmarker - Sound Effect.mp3") },
+			{ src: loadSound("../assets/soundeffects/futuristic-smg-sound-effect-100378.mp3") },
+			{ src: loadSound("../assets/soundeffects/bfg-laser-89662.mp3") }
 		]
 	}
 
@@ -95,6 +109,7 @@ class Game {
 		clear()
 		this.background.draw()
 
+		//SMALLENEMY SPAWN
 		if (gameStarted && frameCount % this.difficulty === 0) {
             this.smallEnemy.push(new Smallenemy(this.enemyImage[0].src, this.explosionImage))
         }
@@ -111,11 +126,8 @@ class Game {
 		if (this.difficulty <= 10) {
 			this.difficulty = 10
 		}
-		console.log(this.difficulty)
-		console.log(this.enemyVelocity)
 
 		// GREEN SHIP WEAPON
-
 		this.weaponGreenBulletsLeft.forEach(function(bullet) {
 			bullet.draw()
 		})
@@ -131,7 +143,6 @@ class Game {
 					this.smallEnemy[smallEnemyIndex].health -= 1
 					if (smallEnemy.health <= 0 && smallEnemy.initialDeadFrameCount < frameCount + 12) {
 						this.smallEnemy.splice(smallEnemyIndex, 1)
-						game.soundeffects[1].src.play()
 						this.player.score += 100
 					}
 				}
@@ -148,7 +159,6 @@ class Game {
 					this.smallEnemy[smallEnemyIndex].health -= 1
 					if (smallEnemy.health <= 0 && smallEnemy.initialDeadFrameCount < frameCount + 12) {
 						this.smallEnemy.splice(smallEnemyIndex, 1)
-						game.soundeffects[1].src.play()
 						this.player.score += 100
 					}
 				}
@@ -158,23 +168,133 @@ class Game {
 			})
 		})
 
-		// ORANGE SHIP WEAPON
+		// RED SHIP WEAPON
+		this.weaponRedBulletsLeft.forEach(function(bullet) {
+			bullet.draw()
+		})
 
+		this.weaponRedBulletsRight.forEach(function(bullet) {
+			bullet.draw()
+		})
+
+		this.weaponRedBulletsLeft.forEach((bullet, bulletIndex) => {
+			if (bullet.initialFrameCount +3 < frameCount) {
+				this.weaponRedBulletsLeft.splice(bulletIndex, 1)
+			}
+		})
+
+		this.weaponRedBulletsRight.forEach((bullet, bulletIndex) => {
+			if (bullet.initialFrameCount +3 < frameCount) {
+				this.weaponRedBulletsRight.splice(bulletIndex, 1)
+			}
+		})
+
+		this.weaponRedBulletsLeft.forEach((bullet) => {
+			this.smallEnemy.forEach((smallEnemy, smallEnemyIndex) => {
+				if (bullet.bulletCollision(smallEnemy)) {
+					smallEnemy.health = 0
+					if (smallEnemy.health <= 0 && smallEnemy.initialDeadFrameCount < frameCount + 12) {
+						this.smallEnemy.splice(smallEnemyIndex, 1)
+						this.player.score += 100
+					}
+				}
+			})
+		})
+
+		this.weaponRedBulletsRight.forEach((bullet) => {
+			this.smallEnemy.forEach((smallEnemy, smallEnemyIndex) => {
+				if (bullet.bulletCollision(smallEnemy)) {
+					smallEnemy.health = 0
+					if (smallEnemy.health <= 0 && smallEnemy.initialDeadFrameCount < frameCount + 12) {
+						this.smallEnemy.splice(smallEnemyIndex, 1)
+						this.player.score += 100
+					}
+				}
+			})
+		})
+
+		// ORANGE SHIP WEAPON
 		this.weaponOrangeBulletsLeft.forEach(function(bullet) {
 			bullet.draw()
 		})
 
-		this.weaponOrangeBulletsLeft = this.weaponOrangeBulletsLeft.filter((bullet) => {
-            if (frameCount > bullet.startFrame + 70) {
-				bullet.image.remove()
-                return false
-            } else {
-                return true
-            }
-        })
+		this.weaponOrangeBulletsLeft2.forEach(function(bullet) {
+			bullet.draw()
+		})
+
+		this.weaponOrangeBulletsRight.forEach(function(bullet) {
+			bullet.draw()
+		})
+
+		this.weaponOrangeBulletsRight2.forEach(function(bullet) {
+			bullet.draw()
+		})
+
+		this.weaponOrangeBulletsLeft.forEach((bullet, bulletIndex) => {
+			this.smallEnemy.forEach((smallEnemy, smallEnemyIndex) => {
+				if (bullet.bulletCollision(smallEnemy)) {
+					this.weaponGreenBulletsLeft.splice(bulletIndex, 1)
+					this.smallEnemy[smallEnemyIndex].health -= 1
+					if (smallEnemy.health <= 0 && smallEnemy.initialDeadFrameCount < frameCount + 12) {
+						this.smallEnemy.splice(smallEnemyIndex, 1)
+						this.player.score += 100
+					}
+				}
+				if (bullet.y < -100) {
+					this.weaponGreenBulletsLeft.splice(bulletIndex, 1)
+				}
+			})
+		})
+
+		this.weaponOrangeBulletsLeft2.forEach((bullet, bulletIndex) => {
+			this.smallEnemy.forEach((smallEnemy, smallEnemyIndex) => {
+				if (bullet.bulletCollision(smallEnemy)) {
+					this.weaponOrangeBulletsLeft2.splice(bulletIndex, 1)
+					this.smallEnemy[smallEnemyIndex].health -= 1
+					if (smallEnemy.health <= 0 && smallEnemy.initialDeadFrameCount < frameCount + 12) {
+						this.smallEnemy.splice(smallEnemyIndex, 1)
+						this.player.score += 100
+					}
+				}
+				if (bullet.y < -100) {
+					this.weaponOrangeBulletsLeft2.splice(bulletIndex, 1)
+				}
+			})
+		})
 		
+		this.weaponOrangeBulletsRight.forEach((bullet, bulletIndex) => {
+			this.smallEnemy.forEach((smallEnemy, smallEnemyIndex) => {
+				if (bullet.bulletCollision(smallEnemy)) {
+					this.weaponOrangeBulletsRight.splice(bulletIndex, 1)
+					this.smallEnemy[smallEnemyIndex].health -= 1
+					if (smallEnemy.health <= 0 && smallEnemy.initialDeadFrameCount < frameCount + 12) {
+						this.smallEnemy.splice(smallEnemyIndex, 1)
+						this.player.score += 100
+					}
+				}
+				if (bullet.y < -100) {
+					this.weaponOrangeBulletsRight.splice(bulletIndex, 1)
+				}
+			})
+		})
+
+		this.weaponOrangeBulletsRight2.forEach((bullet, bulletIndex) => {
+			this.smallEnemy.forEach((smallEnemy, smallEnemyIndex) => {
+				if (bullet.bulletCollision(smallEnemy)) {
+					this.weaponOrangeBulletsRight2.splice(bulletIndex, 1)
+					this.smallEnemy[smallEnemyIndex].health -= 1
+					if (smallEnemy.health <= 0 && smallEnemy.initialDeadFrameCount < frameCount + 12) {
+						this.smallEnemy.splice(smallEnemyIndex, 1)
+						this.player.score += 100
+					}
+				}
+				if (bullet.y < -100) {
+					this.weaponOrangeBulletsRight2.splice(bulletIndex, 1)
+				}
+			})
+		})
+
 		// PLAYER COLLISION
-		
 		this.smallEnemy.forEach((smallEnemy, smallEnemyIndex) => {
 			if (this.player.playerCollision(smallEnemy)) {
 				this.smallEnemy[smallEnemyIndex].health = 0
