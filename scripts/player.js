@@ -65,19 +65,27 @@ class Player {
 	}
 
     moveRight() {
-		this.x += 10
+		if (buttonGreen === "on") { this.x += 10 }
+        if (buttonRed === "on") { this.x += 5 }
+        if (buttonOrange === "on") { this.x += 7.5 }
 	}
 
 	moveLeft() {
-		this.x -= 10
+		if (buttonGreen === "on") { this.x -= 10 }
+        if (buttonRed === "on") { this.x -= 5 }
+        if (buttonOrange === "on") { this.x -= 7.5 }
 	}
 
 	moveUp() {
-		this.y -= 10
+		if (buttonGreen === "on") { this.y -= 10 }
+        if (buttonRed === "on") { this.y -= 5 }
+        if (buttonOrange === "on") { this.y -= 7.5 }
 	}
 
 	moveDown() {
-		this.y += 10
+		if (buttonGreen === "on") { this.y += 10 }
+        if (buttonRed === "on") { this.y += 5 }
+        if (buttonOrange === "on") { this.y += 7.5 }
 	}
     
     useWeaponGreen() {
@@ -136,6 +144,7 @@ class Player {
         if (dist(smallEnemyX, smallEnemyY, playerX, playerY) > 100) {
             return false
         } else {
+            this.health -= 0.5
             return true
         }
     }
@@ -143,7 +152,6 @@ class Player {
     playerScore() {
         if (gameStarted) {
             let displayScore = `Score: ${this.score}`
-
             text(displayScore, 870, 100)
             textFont(orbitronBlack)
             fill(255, 255, 255)
@@ -156,7 +164,6 @@ class Player {
         if (gameStarted) {
             image(game.playerHealthImage[0].src, 60, 50, 84, 84)
             let displayHealth = `${this.health}x`
-
             text(displayHealth, 126, 102)
             textFont(orbitronBlack)
             fill(255, 255, 255)

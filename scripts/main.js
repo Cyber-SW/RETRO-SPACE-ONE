@@ -13,6 +13,8 @@ const headlineStart = document.querySelector(".headline-container")
 
 const buttonContainer = document.querySelector(".btn-container-hide")
 const chooseShipContainer = document.querySelector(".choose-ship-container-hide")
+const container = document.querySelector(".container-hide")
+const shipAlign = document.querySelector(".ship-spec-align-hide")
 
 let buttonGreen = document.querySelector(".btn-green")
 buttonGreen.addEventListener("click", shipGreen)
@@ -40,6 +42,10 @@ function createGame() {
 
 	buttonContainer.classList.remove("btn-container-hide")
 	buttonContainer.classList.toggle("btn-container-show")
+	container.classList.remove("container-hide")
+	container.classList.toggle("container-show")
+	shipAlign.classList.remove("ship-spec-align-hide")
+	shipAlign.classList.toggle("ship-spec-align-show")
 
 	chooseShipContainer.classList.remove("choose-ship-container-hide")
 	chooseShipContainer.classList.toggle("choose-ship-container-show")
@@ -53,6 +59,10 @@ function createNewGame() {
 
 	buttonContainer.classList.remove("btn-container-hide")
 	buttonContainer.classList.toggle("btn-container-show")
+	container.classList.remove("container-hide")
+	container.classList.toggle("container-show")
+	shipAlign.classList.remove("ship-spec-align-hide")
+	shipAlign.classList.toggle("ship-spec-align-show")
 
 	chooseShipContainer.classList.remove("choose-ship-container-hide")
 	chooseShipContainer.classList.toggle("choose-ship-container-show")
@@ -67,6 +77,10 @@ function shipGreen() {
 	chooseShipContainer.classList.toggle("choose-ship-container-hide")
 	buttonContainer.classList.remove("btn-container-show")
 	buttonContainer.classList.toggle("btn-container-hide")
+	shipAlign.classList.remove("ship-spec-align-show")
+	shipAlign.classList.toggle("ship-spec-align-hide")
+	container.classList.remove("container-show")
+	container.classList.toggle("container-hide")
 
 	buttonGreen = "on"
 	game.player.health = 4
@@ -80,6 +94,10 @@ function shipRed() {
 	chooseShipContainer.classList.toggle("choose-ship-container-hide")
 	buttonContainer.classList.remove("btn-container-show")
 	buttonContainer.classList.toggle("btn-container-hide")
+	shipAlign.classList.remove("ship-spec-align-show")
+	shipAlign.classList.toggle("ship-spec-align-hide")
+	container.classList.remove("container-show")
+	container.classList.toggle("container-hide")
 
 	buttonRed = "on"
 	game.player.health = 7
@@ -93,6 +111,10 @@ function shipOrange() {
 	chooseShipContainer.classList.toggle("choose-ship-container-hide")
 	buttonContainer.classList.remove("btn-container-show")
 	buttonContainer.classList.toggle("btn-container-hide")
+	shipAlign.classList.remove("ship-spec-align-show")
+	shipAlign.classList.toggle("ship-spec-align-hide")
+	container.classList.remove("container-show")
+	container.classList.toggle("container-hide")
 
 	buttonOrange = "on"
 	game.player.health = 5

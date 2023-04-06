@@ -61,9 +61,9 @@ class WeaponGreenRight {
 class WeaponRedLeft {
     constructor(image, playerPositionX, playerPositionY) {
         this.image = image
-        this.x = playerPositionX - 55
+        this.x = playerPositionX + 14
 		this.y = playerPositionY - 570
-        this.width = 192
+        this.width = 52
         this.height = 700
         this.initialFrameCount = frameCount
     }
@@ -78,7 +78,7 @@ class WeaponRedLeft {
         let bulletX = this.x + this.width / 2
         let bulletY = this.y + this.height / 2
 
-        if (dist(smallEnemyX, smallEnemyY, bulletX, bulletY) > 100) {
+        if (dist(smallEnemyX, smallEnemyY, bulletX, bulletY) > 110) {
             return false
         } else {
             game.soundeffects[1].src.play()
@@ -90,9 +90,9 @@ class WeaponRedLeft {
 class WeaponRedRight {
     constructor(image, playerPositionX, playerPositionY) {
         this.image = image
-        this.x = playerPositionX + 35
+        this.x = playerPositionX + 106
 		this.y = playerPositionY - 570
-        this.width = 192
+        this.width = 52
         this.height = 700
         this.initialFrameCount = frameCount
     }
@@ -107,7 +107,7 @@ class WeaponRedRight {
         let bulletX = this.x + this.width / 2
         let bulletY = this.y + this.height / 2
 
-        if (dist(smallEnemyX, smallEnemyY, bulletX, bulletY) > 100) {
+        if (dist(smallEnemyX, smallEnemyY, bulletX, bulletY) > 110) {
             return false
         } else {
             game.soundeffects[1].src.play()

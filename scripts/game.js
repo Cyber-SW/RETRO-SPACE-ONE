@@ -298,7 +298,6 @@ class Game {
 		this.smallEnemy.forEach((smallEnemy, smallEnemyIndex) => {
 			if (this.player.playerCollision(smallEnemy)) {
 				this.smallEnemy[smallEnemyIndex].health = 0
-				this.player.health -= 1
 				console.log(this.player.health)
 				if (smallEnemy.initialDeadFrameCount < frameCount + 12)
 				this.smallEnemy.splice(smallEnemyIndex, 1)
