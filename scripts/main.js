@@ -1,6 +1,7 @@
 let game = new Game()
 let gameStarted = false
 let music
+let music2
 
 // Load game assets
 function preload() {
@@ -34,6 +35,7 @@ function setup() {
 
 	orbitronBlack = loadFont("../assets/font/Orbitron-Black.ttf")
 	music = lobbyMusic = loadSound("../assets/music/Synthwave goose - Blade Runner 2049.mp3")
+	music2 = lobbyMusic = loadSound("../assets/music/Future Club.mp4")
 }
 
 function createGame() {
@@ -50,7 +52,9 @@ function createGame() {
 	chooseShipContainer.classList.remove("choose-ship-container-hide")
 	chooseShipContainer.classList.toggle("choose-ship-container-show")
 
+	music2.stop()
 	music.play()
+	music.jump(40, 180)
 }
 
 function createNewGame() {
@@ -67,8 +71,8 @@ function createNewGame() {
 	chooseShipContainer.classList.remove("choose-ship-container-hide")
 	chooseShipContainer.classList.toggle("choose-ship-container-show")
 
-	music.stop()
-	music.play()
+	music2.stop()
+	music.jump(40, 180)
 	game.player.score = 0
 }
 
@@ -83,10 +87,12 @@ function shipGreen() {
 	container.classList.toggle("container-hide")
 
 	buttonGreen = "on"
-	game.player.health = 4
+	game.player.health = 3
 
 	gameStarted = true
 	if (gameStarted) draw()
+	music.stop()
+	music2.jump(5, 270)
 }
 
 function shipRed() {
@@ -100,10 +106,12 @@ function shipRed() {
 	container.classList.toggle("container-hide")
 
 	buttonRed = "on"
-	game.player.health = 7
+	game.player.health = 5
 
 	gameStarted = true
 	if (gameStarted) draw()
+	music.stop()
+	music2.jump(5, 270)
 }
 
 function shipOrange() {
@@ -117,10 +125,12 @@ function shipOrange() {
 	container.classList.toggle("container-hide")
 
 	buttonOrange = "on"
-	game.player.health = 5
+	game.player.health = 4
 
 	gameStarted = true
 	if (gameStarted) draw()
+	music.stop()
+	music2.jump(5, 270)
 }
 
 function displayLosingScreen() {

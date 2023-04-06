@@ -39,13 +39,13 @@ class Player {
         }
 
         if (keyIsDown(32) && buttonRed === "on") {
-            if (frameCount % 35 === 0) this.useWeaponRed()
-            if (frameCount % 35 === 0) game.soundeffects[3].src.play()
+            if (frameCount % 30 === 0) this.useWeaponRed()
+            if (frameCount % 30 === 0) game.soundeffects[3].src.play()
         }
 
         if (keyIsDown(32) && buttonOrange === "on") {
-            if (frameCount % 20 === 0) this.useWeaponOrange()
-            if (frameCount % 20 === 0) game.soundeffects[2].src.play()
+            if (frameCount % 15 === 0) this.useWeaponOrange()
+            if (frameCount % 15 === 0) game.soundeffects[2].src.play()
         }
 
         if (this.health <= 0 && gameStarted === true) {
@@ -66,26 +66,26 @@ class Player {
 
     moveRight() {
 		if (buttonGreen === "on") { this.x += 10 }
-        if (buttonRed === "on") { this.x += 5 }
-        if (buttonOrange === "on") { this.x += 7.5 }
+        if (buttonRed === "on") { this.x += 6 }
+        if (buttonOrange === "on") { this.x += 8 }
 	}
 
 	moveLeft() {
 		if (buttonGreen === "on") { this.x -= 10 }
-        if (buttonRed === "on") { this.x -= 5 }
-        if (buttonOrange === "on") { this.x -= 7.5 }
+        if (buttonRed === "on") { this.x -= 6 }
+        if (buttonOrange === "on") { this.x -= 8 }
 	}
 
 	moveUp() {
 		if (buttonGreen === "on") { this.y -= 10 }
-        if (buttonRed === "on") { this.y -= 5 }
-        if (buttonOrange === "on") { this.y -= 7.5 }
+        if (buttonRed === "on") { this.y -= 6 }
+        if (buttonOrange === "on") { this.y -= 8 }
 	}
 
 	moveDown() {
 		if (buttonGreen === "on") { this.y += 10 }
-        if (buttonRed === "on") { this.y += 5 }
-        if (buttonOrange === "on") { this.y += 7.5 }
+        if (buttonRed === "on") { this.y += 6 }
+        if (buttonOrange === "on") { this.y += 8 }
 	}
     
     useWeaponGreen() {
@@ -178,7 +178,6 @@ class Player {
 	    buttonRed = "off"
 	    buttonOrange = "off"
         game.enemyVelocity = 2
-        game.difficulty = 100
         displayLosingScreen()
     }
 }

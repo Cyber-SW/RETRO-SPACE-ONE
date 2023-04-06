@@ -22,7 +22,6 @@ class WeaponGreenLeft {
         if (dist(smallEnemyX, smallEnemyY, bulletX, bulletY) > 50) {
             return false
         } else {
-            game.soundeffects[1].src.play()
             return true
         }
     }
@@ -52,7 +51,6 @@ class WeaponGreenRight {
         if (dist(smallEnemyX, smallEnemyY, bulletX, bulletY) > 50) {
             return false
         } else {
-            game.soundeffects[1].src.play()
             return true
         }
     }
@@ -140,7 +138,6 @@ class WeaponOrangeLeft {
         if (dist(smallEnemyX, smallEnemyY, bulletX, bulletY) > 35) {
             return false
         } else {
-            game.soundeffects[1].src.play()
             return true
         }
     }
@@ -170,7 +167,6 @@ class WeaponOrangeLeft2 {
         if (dist(smallEnemyX, smallEnemyY, bulletX, bulletY) > 35) {
             return false
         } else {
-            game.soundeffects[1].src.play()
             return true
         }
     }
@@ -200,7 +196,6 @@ class WeaponOrangeRight {
         if (dist(smallEnemyX, smallEnemyY, bulletX, bulletY) > 35) {
             return false
         } else {
-            game.soundeffects[1].src.play()
             return true
         }
     }
@@ -230,7 +225,6 @@ class WeaponOrangeRight2 {
         if (dist(smallEnemyX, smallEnemyY, bulletX, bulletY) > 35) {
             return false
         } else {
-            game.soundeffects[1].src.play()
             return true
         }
     }

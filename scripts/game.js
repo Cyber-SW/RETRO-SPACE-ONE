@@ -4,7 +4,6 @@ class Game {
 		this.player = new Player()
 		
 		this.smallEnemy = []
-		this.bigEnemy = []
 
 		this.weaponGreenBulletsLeft = []
 		this.weaponGreenBulletsRight = []
@@ -30,7 +29,6 @@ class Game {
 
 		this.soundeffects
 		
-		this.difficulty = 100
 		this.enemyVelocity = 2
 	}
 	
@@ -78,6 +76,20 @@ class Game {
 			{ src: loadImage("../assets/explosions/Ship2_Explosion/Ship2_Explosion_021.png") }
 		]
 
+		this.bigExplosionImage = [
+			{ src: loadImage("../assets/explosions/Ship6_Explosion/Ship6_Explosion_000.png") },
+			{ src: loadImage("../assets/explosions/Ship6_Explosion/Ship6_Explosion_004.png") },
+			{ src: loadImage("../assets/explosions/Ship6_Explosion/Ship6_Explosion_005.png") },
+			{ src: loadImage("../assets/explosions/Ship6_Explosion/Ship6_Explosion_007.png") },
+			{ src: loadImage("../assets/explosions/Ship6_Explosion/Ship6_Explosion_009.png") },
+			{ src: loadImage("../assets/explosions/Ship6_Explosion/Ship6_Explosion_011.png") },
+			{ src: loadImage("../assets/explosions/Ship6_Explosion/Ship6_Explosion_013.png") },
+			{ src: loadImage("../assets/explosions/Ship6_Explosion/Ship6_Explosion_016.png") },
+			{ src: loadImage("../assets/explosions/Ship6_Explosion/Ship6_Explosion_017.png") },
+			{ src: loadImage("../assets/explosions/Ship6_Explosion/Ship6_Explosion_019.png") },
+			{ src: loadImage("../assets/explosions/Ship6_Explosion/Ship6_Explosion_021.png") }
+		]
+
 		this.playerExplosionImage = [
 			{ src: loadImage("../assets/explosions/player-explosion/Explosion3_1.png") },
 			{ src: loadImage("../assets/explosions/player-explosion/Explosion3_2.png") },
@@ -108,18 +120,26 @@ class Game {
 	draw() {
 		clear()
 		this.background.draw()
+		this.soundeffects[3].src.setVolume(0.3)
 
 		//SMALLENEMY SPAWN
-		if (gameStarted && frameCount % this.difficulty === 0) {
+		if (gameStarted && frameCount % 20 === 0) {
             this.smallEnemy.push(new Smallenemy(this.enemyImage[0].src, this.explosionImage))
         }
+
+		if (gameStarted && frameCount % 100 === 0) {
+            this.smallEnemy.push(new Bigenemy(this.enemyImage[1].src, this.bigExplosionImage))
+        }
+
+		this.bigEnemy.forEach(function(enemy) {
+            enemy.draw()
+        })
 
 		this.smallEnemy.forEach(function(enemy) {
             enemy.draw()
         })
 
 		if (gameStarted && frameCount % 400 === 0) {
-			this.difficulty /= 2
 			this.enemyVelocity += 0.5
 		}
 
@@ -143,6 +163,7 @@ class Game {
 					this.smallEnemy[smallEnemyIndex].health -= 1
 					if (smallEnemy.health <= 0 && smallEnemy.initialDeadFrameCount < frameCount + 12) {
 						this.smallEnemy.splice(smallEnemyIndex, 1)
+						game.soundeffects[1].src.play()
 						this.player.score += 100
 					}
 				}
@@ -159,6 +180,7 @@ class Game {
 					this.smallEnemy[smallEnemyIndex].health -= 1
 					if (smallEnemy.health <= 0 && smallEnemy.initialDeadFrameCount < frameCount + 12) {
 						this.smallEnemy.splice(smallEnemyIndex, 1)
+						game.soundeffects[1].src.play()
 						this.player.score += 100
 					}
 				}
@@ -237,6 +259,7 @@ class Game {
 					this.smallEnemy[smallEnemyIndex].health -= 1
 					if (smallEnemy.health <= 0 && smallEnemy.initialDeadFrameCount < frameCount + 12) {
 						this.smallEnemy.splice(smallEnemyIndex, 1)
+						game.soundeffects[1].src.play()
 						this.player.score += 100
 					}
 				}
@@ -253,6 +276,7 @@ class Game {
 					this.smallEnemy[smallEnemyIndex].health -= 1
 					if (smallEnemy.health <= 0 && smallEnemy.initialDeadFrameCount < frameCount + 12) {
 						this.smallEnemy.splice(smallEnemyIndex, 1)
+						game.soundeffects[1].src.play()
 						this.player.score += 100
 					}
 				}
@@ -269,6 +293,7 @@ class Game {
 					this.smallEnemy[smallEnemyIndex].health -= 1
 					if (smallEnemy.health <= 0 && smallEnemy.initialDeadFrameCount < frameCount + 12) {
 						this.smallEnemy.splice(smallEnemyIndex, 1)
+						game.soundeffects[1].src.play()
 						this.player.score += 100
 					}
 				}
@@ -285,6 +310,7 @@ class Game {
 					this.smallEnemy[smallEnemyIndex].health -= 1
 					if (smallEnemy.health <= 0 && smallEnemy.initialDeadFrameCount < frameCount + 12) {
 						this.smallEnemy.splice(smallEnemyIndex, 1)
+						game.soundeffects[1].src.play()
 						this.player.score += 100
 					}
 				}
@@ -307,10 +333,6 @@ class Game {
 		this.player.draw()
 		this.player.playerScore()
 		this.player.displayPlayerHealth()
-	}
-
-	play() {
-		this.soundeffects.src.setVolume(0.2)
 	}
 }
 

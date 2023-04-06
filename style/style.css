@@ -24,6 +24,7 @@ body {
     background-color: #c8dad3;
     font-size: 20px;
     overflow: hidden;
+    background-color: #212729;
 }
 
 .headline-container {
@@ -190,17 +191,17 @@ body {
 
 .ship-green-spec {
     position: relative;
-    left: -125px;
+    left: -120px;
 }
 
 .ship-red-spec {
     position: relative;
-    right: 5px;
+    right: 0px;
 }
 
 .ship-orange-spec {
     position: relative;
-    right: -140px;
+    right: -90px;
 }
 
 li {
