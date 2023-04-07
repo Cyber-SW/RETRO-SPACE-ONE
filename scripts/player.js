@@ -158,7 +158,7 @@ class Player {
             text(displayScore, displayScoreWidth, displayScoreHeight)
             textFont(orbitronBlack)
             fill(255, 255, 255)
-            textAlign(LEFT, CENTER)
+            textAlign(RIGHT, CENTER)
             textSize(32)
         }
     }
@@ -169,14 +169,14 @@ class Player {
             let displayHealthWidth = (WIDTH / 10)
             let displayHealthHeight = (HEIGHT / 10)
 
-            image(game.playerHealthImage[0].src, displayHealthWidth / 2.5, displayHealthHeight / 2.5, 84, 84)
+            image(game.playerHealthImage[0].src, displayHealthWidth / 3, displayHealthHeight / 3, 84, 84)
 
             text(displayHealth, displayHealthWidth, displayHealthHeight)
             textFont(orbitronBlack)
             fill(255, 255, 255)
             textAlign(LEFT, BASELINE)
             textSize(32)
-        } //test
+        }
     }
 
     playerDies() {
