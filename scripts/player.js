@@ -176,7 +176,7 @@ class Player {
             fill(255, 255, 255)
             textAlign(LEFT, BASELINE)
             textSize(32)
-        }
+        } //test
     }
 
     playerDies() {
