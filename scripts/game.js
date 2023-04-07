@@ -131,7 +131,7 @@ class Game {
             this.smallEnemy.push(new Bigenemy(this.enemyImage[1].src, this.bigExplosionImage))
         }
 
-		this.bigEnemy.forEach(function(enemy) {
+		this.smallEnemy.forEach(function(enemy) {
             enemy.draw()
         })
 
@@ -141,10 +141,6 @@ class Game {
 
 		if (gameStarted && frameCount % 400 === 0) {
 			this.enemyVelocity += 0.5
-		}
-
-		if (this.difficulty <= 10) {
-			this.difficulty = 10
 		}
 
 		// GREEN SHIP WEAPON

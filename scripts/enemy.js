@@ -43,7 +43,7 @@ class Bigenemy {
         this.x = (Math.random() * width) / 1.14
         this.y = -this.height
         this.velocity = game.enemyVelocity
-        this.health = 10
+        this.health = 6
         this.initialDeadFrameCount = Infinity
         this.deadAnimation = true
     }
@@ -54,6 +54,7 @@ class Bigenemy {
 
         if (this.health <= 0 && this.deadAnimation === true) {
             this.initialDeadFrameCount = frameCount
+            game.player.score += 400
             image(this.bigExplosionImage[0].src, this.x, this.y + 10, this.width, this.height)
             if (frameCount % 2 === 0) { image(this.bigExplosionImage[1].src, this.x, this.y +10, this.width, this.height) }
             if (frameCount % 3 === 0) { image(this.bigExplosionImage[2].src, this.x, this.y +10, this.width, this.height) }
