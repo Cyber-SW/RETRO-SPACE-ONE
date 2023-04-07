@@ -59,7 +59,7 @@ body {
     justify-content: center;
     align-items: center;
     position: absolute;
-    margin-top: 17,5rem;
+    margin-top: 17.5rem;
     opacity: 1;  
     animation: start-btn-show 3s infinite;
 }
