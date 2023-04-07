@@ -158,7 +158,7 @@ class Player {
             text(displayScore, displayScoreWidth, displayScoreHeight)
             textFont(orbitronBlack)
             fill(255, 255, 255)
-            textAlign(RIGHT, CENTER)
+            textAlign(LEFT, CENTER)
             textSize(32)
         }
     }
@@ -166,8 +166,8 @@ class Player {
     displayPlayerHealth() {
         if (gameStarted) {
             let displayHealth = `${this.health}x`
-            let displayHealthWidth = (WIDTH / 100) * 90
-            let displayHealthHeight = (HEIGHT / 10)
+            let displayHealthWidth = (WIDTH / 100) * 91
+            let displayHealthHeight = (HEIGHT / 11)
 
             image(game.playerHealthImage[0].src, displayHealthWidth, displayHealthHeight, 84, 84)
 
