@@ -169,9 +169,9 @@ class Player {
             let displayHealthWidth = (WIDTH / 100) * 90
             let displayHealthHeight = (HEIGHT / 11)
 
-            image(game.playerHealthImage[0].src, displayHealthWidth +44, displayHealthHeight -84, 84, 84)
+            image(game.playerHealthImage[0].src, displayHealthWidth +44, displayHealthHeight -44, 84, 84)
 
-            text(displayHealth, displayHealthWidth, displayHealthHeight)
+            text(displayHealth, displayHealthWidth -44, displayHealthHeight)
             textFont(orbitronBlack)
             fill(255, 255, 255)
             textAlign(LEFT, CENTER)
