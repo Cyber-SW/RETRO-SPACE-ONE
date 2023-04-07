@@ -2,8 +2,8 @@ class Player {
 	constructor() {
 		this.width = 200
 		this.height = 280
-		this.x = WIDTH / 2 -this.width
-		this.y = HEIGHT / 2 -this.height
+		this.x = WIDTH / 2
+		this.y = HEIGHT / 2
         this.health = this.selectedHealth 
 		this.score = 0
 	}
@@ -152,22 +152,26 @@ class Player {
     playerScore() {
         if (gameStarted) {
             let displayScore = `${this.score}`
-            let displayScoreWidth = (WIDTH /100) * 80
+            let displayScoreWidth = (WIDTH / 100) * 90
             let displayScoreHeight = (HEIGHT / 10)
 
             text(displayScore, displayScoreWidth, displayScoreHeight)
             textFont(orbitronBlack)
             fill(255, 255, 255)
-            textAlign(LEFT, BASELINE)
+            textAlign(LEFT, CENTER)
             textSize(32)
         }
     }
 
     displayPlayerHealth() {
         if (gameStarted) {
-            image(game.playerHealthImage[0].src, 60, 50, 84, 84)
+            image(game.playerHealthImage[0].src, 60, 50, displayHealthWidth / 2, displayHealthHeight / 2)
+
             let displayHealth = `${this.health}x`
-            text(displayHealth, 126, 102)
+            let displayHealthWidth = (WIDTH / 10)
+            let displayHealthHeight= (HEIGHT / 10)
+
+            text(displayHealth, displayHealthWidth, displayHealthHeight)
             textFont(orbitronBlack)
             fill(255, 255, 255)
             textAlign(LEFT, BASELINE)
