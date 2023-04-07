@@ -166,10 +166,10 @@ class Player {
     displayPlayerHealth() {
         if (gameStarted) {
             let displayHealth = `${this.health}x`
-            let displayHealthWidth = (WIDTH / 100) * 91
+            let displayHealthWidth = (WIDTH / 100) * 90
             let displayHealthHeight = (HEIGHT / 11)
 
-            image(game.playerHealthImage[0].src, displayHealthWidth, displayHealthHeight, 84, 84)
+            image(game.playerHealthImage[0].src, displayHealthWidth -84, displayHealthHeight -84, 84, 84)
 
             text(displayHealth, displayHealthWidth, displayHealthHeight)
             textFont(orbitronBlack)
