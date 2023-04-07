@@ -2,7 +2,7 @@ class Player {
 	constructor() {
 		this.width = 200
 		this.height = 280
-		this.x = WIDTH / 2 
+		this.x = (WIDTH / 2) - (this.width /2)
 		this.y = HEIGHT / 2 
         this.health = this.selectedHealth 
 		this.score = 0

@@ -160,7 +160,8 @@ class Game {
 					if (smallEnemy.health <= 0 && smallEnemy.initialDeadFrameCount < frameCount + 12) {
 						this.smallEnemy.splice(smallEnemyIndex, 1)
 						game.soundeffects[1].src.play()
-						this.player.score += 100
+						if (smallEnemy.enemyType === "small") { this.player.score += 100 }
+						if (smallEnemy.enemyType === "big") { this.player.score += 500 }
 					}
 				}
 				if (bullet.y < -100) {
@@ -177,7 +178,8 @@ class Game {
 					if (smallEnemy.health <= 0 && smallEnemy.initialDeadFrameCount < frameCount + 12) {
 						this.smallEnemy.splice(smallEnemyIndex, 1)
 						game.soundeffects[1].src.play()
-						this.player.score += 100
+						if (smallEnemy.enemyType === "small") { this.player.score += 100 }
+						if (smallEnemy.enemyType === "big") { this.player.score += 500 }
 					}
 				}
 				if (bullet.y < -100) {
@@ -213,7 +215,8 @@ class Game {
 					smallEnemy.health = 0
 					if (smallEnemy.health <= 0 && smallEnemy.initialDeadFrameCount < frameCount + 12) {
 						this.smallEnemy.splice(smallEnemyIndex, 1)
-						this.player.score += 100
+						if (smallEnemy.enemyType === "small") { this.player.score += 100 }
+						if (smallEnemy.enemyType === "big") { this.player.score += 500 }
 					}
 				}
 			})
@@ -225,7 +228,8 @@ class Game {
 					smallEnemy.health = 0
 					if (smallEnemy.health <= 0 && smallEnemy.initialDeadFrameCount < frameCount + 12) {
 						this.smallEnemy.splice(smallEnemyIndex, 1)
-						this.player.score += 100
+						if (smallEnemy.enemyType === "small") { this.player.score += 100 }
+						if (smallEnemy.enemyType === "big") { this.player.score += 500 }
 					}
 				}
 			})
@@ -256,7 +260,8 @@ class Game {
 					if (smallEnemy.health <= 0 && smallEnemy.initialDeadFrameCount < frameCount + 12) {
 						this.smallEnemy.splice(smallEnemyIndex, 1)
 						game.soundeffects[1].src.play()
-						this.player.score += 100
+						if (smallEnemy.enemyType === "small") { this.player.score += 100 }
+						if (smallEnemy.enemyType === "big") { this.player.score += 500 }
 					}
 				}
 				if (bullet.y < -100) {
@@ -273,7 +278,8 @@ class Game {
 					if (smallEnemy.health <= 0 && smallEnemy.initialDeadFrameCount < frameCount + 12) {
 						this.smallEnemy.splice(smallEnemyIndex, 1)
 						game.soundeffects[1].src.play()
-						this.player.score += 100
+						if (smallEnemy.enemyType === "small") { this.player.score += 100 }
+						if (smallEnemy.enemyType === "big") { this.player.score += 500 }
 					}
 				}
 				if (bullet.y < -100) {
@@ -290,7 +296,8 @@ class Game {
 					if (smallEnemy.health <= 0 && smallEnemy.initialDeadFrameCount < frameCount + 12) {
 						this.smallEnemy.splice(smallEnemyIndex, 1)
 						game.soundeffects[1].src.play()
-						this.player.score += 100
+						if (smallEnemy.enemyType === "small") { this.player.score += 100 }
+						if (smallEnemy.enemyType === "big") { this.player.score += 500 }
 					}
 				}
 				if (bullet.y < -100) {
@@ -307,7 +314,8 @@ class Game {
 					if (smallEnemy.health <= 0 && smallEnemy.initialDeadFrameCount < frameCount + 12) {
 						this.smallEnemy.splice(smallEnemyIndex, 1)
 						game.soundeffects[1].src.play()
-						this.player.score += 100
+						if (smallEnemy.enemyType === "small") { this.player.score += 100 }
+						if (smallEnemy.enemyType === "big") { this.player.score += 500 }
 					}
 				}
 				if (bullet.y < -100) {

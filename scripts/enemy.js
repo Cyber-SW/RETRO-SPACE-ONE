@@ -10,6 +10,7 @@ class Smallenemy {
         this.health = 3
         this.initialDeadFrameCount = Infinity
         this.deadAnimation = true
+        this.enemyType = "small"
     }
 
     draw() {
@@ -46,15 +47,15 @@ class Bigenemy {
         this.health = 6
         this.initialDeadFrameCount = Infinity
         this.deadAnimation = true
+        this.enemyType = "big"
     }
 
     draw() {
         this.y += this.velocity
         image(this.image, this.x, this.y, this.width, this.height)
-
+        
         if (this.health <= 0 && this.deadAnimation === true) {
             this.initialDeadFrameCount = frameCount
-            game.player.score += 400
             image(this.bigExplosionImage[0].src, this.x, this.y + 10, this.width, this.height)
             if (frameCount % 2 === 0) { image(this.bigExplosionImage[1].src, this.x, this.y +10, this.width, this.height) }
             if (frameCount % 3 === 0) { image(this.bigExplosionImage[2].src, this.x, this.y +10, this.width, this.height) }
