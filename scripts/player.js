@@ -171,7 +171,7 @@ class Player {
 
             image(game.playerHealthImage[0].src, displayHealthWidth / 2, displayHealthHeight / 2, 84, 84)
 
-            text(displayHealth, displayHealthWidth / 2, displayHealthHeight / 3)
+            text(displayHealth, displayHealthWidth, displayHealthHeight / 2)
             textFont(orbitronBlack)
             fill(255, 255, 255)
             textAlign(LEFT, BASELINE)
