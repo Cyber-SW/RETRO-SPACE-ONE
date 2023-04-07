@@ -1,5 +1,7 @@
 let game = new Game()
 let gameStarted = false
+let canvasWidth
+let canvasHeight
 let music
 let music2
 
@@ -31,8 +33,8 @@ buttonLosingscreen.addEventListener("click", createNewGame)
 
 // Setup game
 function setup() {
-	let canvasWidth = windowHeight / 1.01
-	let canvasHeight = windowHeight / 1.01
+	canvasWidth = windowHeight * 0.99
+	canvasHeight = windowHeight * 0.99
 
 	createCanvas(canvasWidth, canvasHeight)
 
