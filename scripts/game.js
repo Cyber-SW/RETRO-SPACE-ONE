@@ -34,86 +34,86 @@ class Game {
 	
 	preload() {
 		this.backgroundImage = [
-			{ src: loadImage("./assets/bg/space-bg.png"), y: 0, speed: 1 },
-			{ src: loadImage("./assets/bg/space-bg-2.png"), y: 0, speed: 1.5 }
+			{ src: loadImage("assets/bg/space-bg.png"), y: 0, speed: 1 },
+			{ src: loadImage("assets/bg/space-bg-2.png"), y: 0, speed: 1.5 }
 		]
 
 		this.playerImage = [
-			{ src: loadImage("./assets/ships/Spaceship_03_GREEN.png") },
-			{ src: loadImage("./assets/ships/Spaceship_05_RED.png") },
-			{ src: loadImage("./assets/ships/Spaceship_02_ORANGE.png") }
+			{ src: loadImage("assets/ships/Spaceship_03_GREEN.png") },
+			{ src: loadImage("assets/ships/Spaceship_05_RED.png") },
+			{ src: loadImage("assets/ships/Spaceship_02_ORANGE.png") }
 		]
 
 		this.enemyImage = [
-			{ src: loadImage("./assets/enemys/Ship2b.png") },
-			{ src: loadImage("./assets/enemys/Ship6.png") }
+			{ src: loadImage("assets/enemys/Ship2b.png") },
+			{ src: loadImage("assets/enemys/Ship6.png") }
 		]
 
 		this.playerWeaponGreen = [
-			{ src: loadImage("./assets/weapons/green/shot1_4.png") }
+			{ src: loadImage("assets/weapons/green/shot1_4.png") }
 		]
 
 		this.playerWeaponRed = [
-			{ src: loadImage("../assets/weapons/red/shot.png")}
+			{ src: loadImage("assets/weapons/red/shot.png")}
 		]
 
 		this.playerWeaponOrange = [
-			{ src: loadImage("../assets/weapons/orange/shot5_exp2.png") }
+			{ src: loadImage("assets/weapons/orange/shot5_exp2.png") }
 		]
 
 		this.explosionImage = [
-			{ src: loadImage("../assets/explosions/Ship2_Explosion/Ship2_Explosion_000.png") },
-			{ src: loadImage("../assets/explosions/Ship2_Explosion/Ship2_Explosion_004.png") },
-			{ src: loadImage("../assets/explosions/Ship2_Explosion/Ship2_Explosion_005.png") },
-			{ src: loadImage("../assets/explosions/Ship2_Explosion/Ship2_Explosion_008.png") },
-			{ src: loadImage("../assets/explosions/Ship2_Explosion/Ship2_Explosion_009.png") },
-			{ src: loadImage("../assets/explosions/Ship2_Explosion/Ship2_Explosion_010.png") },
-			{ src: loadImage("../assets/explosions/Ship2_Explosion/Ship2_Explosion_013.png") },
-			{ src: loadImage("../assets/explosions/Ship2_Explosion/Ship2_Explosion_014.png") },
-			{ src: loadImage("../assets/explosions/Ship2_Explosion/Ship2_Explosion_015.png") },
-			{ src: loadImage("../assets/explosions/Ship2_Explosion/Ship2_Explosion_016.png") },
-			{ src: loadImage("../assets/explosions/Ship2_Explosion/Ship2_Explosion_019.png") },
-			{ src: loadImage("../assets/explosions/Ship2_Explosion/Ship2_Explosion_021.png") }
+			{ src: loadImage("assets/explosions/Ship2_Explosion/Ship2_Explosion_000.png") },
+			{ src: loadImage("assets/explosions/Ship2_Explosion/Ship2_Explosion_004.png") },
+			{ src: loadImage("assets/explosions/Ship2_Explosion/Ship2_Explosion_005.png") },
+			{ src: loadImage("assets/explosions/Ship2_Explosion/Ship2_Explosion_008.png") },
+			{ src: loadImage("assets/explosions/Ship2_Explosion/Ship2_Explosion_009.png") },
+			{ src: loadImage("assets/explosions/Ship2_Explosion/Ship2_Explosion_010.png") },
+			{ src: loadImage("assets/explosions/Ship2_Explosion/Ship2_Explosion_013.png") },
+			{ src: loadImage("assets/explosions/Ship2_Explosion/Ship2_Explosion_014.png") },
+			{ src: loadImage("assets/explosions/Ship2_Explosion/Ship2_Explosion_015.png") },
+			{ src: loadImage("assets/explosions/Ship2_Explosion/Ship2_Explosion_016.png") },
+			{ src: loadImage("assets/explosions/Ship2_Explosion/Ship2_Explosion_019.png") },
+			{ src: loadImage("assets/explosions/Ship2_Explosion/Ship2_Explosion_021.png") }
 		]
 
 		this.bigExplosionImage = [
-			{ src: loadImage("../assets/explosions/Ship6_Explosion/Ship6_Explosion_000.png") },
-			{ src: loadImage("../assets/explosions/Ship6_Explosion/Ship6_Explosion_004.png") },
-			{ src: loadImage("../assets/explosions/Ship6_Explosion/Ship6_Explosion_005.png") },
-			{ src: loadImage("../assets/explosions/Ship6_Explosion/Ship6_Explosion_007.png") },
-			{ src: loadImage("../assets/explosions/Ship6_Explosion/Ship6_Explosion_009.png") },
-			{ src: loadImage("../assets/explosions/Ship6_Explosion/Ship6_Explosion_011.png") },
-			{ src: loadImage("../assets/explosions/Ship6_Explosion/Ship6_Explosion_013.png") },
-			{ src: loadImage("../assets/explosions/Ship6_Explosion/Ship6_Explosion_016.png") },
-			{ src: loadImage("../assets/explosions/Ship6_Explosion/Ship6_Explosion_017.png") },
-			{ src: loadImage("../assets/explosions/Ship6_Explosion/Ship6_Explosion_019.png") },
-			{ src: loadImage("../assets/explosions/Ship6_Explosion/Ship6_Explosion_021.png") }
+			{ src: loadImage("assets/explosions/Ship6_Explosion/Ship6_Explosion_000.png") },
+			{ src: loadImage("assets/explosions/Ship6_Explosion/Ship6_Explosion_004.png") },
+			{ src: loadImage("assets/explosions/Ship6_Explosion/Ship6_Explosion_005.png") },
+			{ src: loadImage("assets/explosions/Ship6_Explosion/Ship6_Explosion_007.png") },
+			{ src: loadImage("assets/explosions/Ship6_Explosion/Ship6_Explosion_009.png") },
+			{ src: loadImage("assets/explosions/Ship6_Explosion/Ship6_Explosion_011.png") },
+			{ src: loadImage("assets/explosions/Ship6_Explosion/Ship6_Explosion_013.png") },
+			{ src: loadImage("assets/explosions/Ship6_Explosion/Ship6_Explosion_016.png") },
+			{ src: loadImage("assets/explosions/Ship6_Explosion/Ship6_Explosion_017.png") },
+			{ src: loadImage("assets/explosions/Ship6_Explosion/Ship6_Explosion_019.png") },
+			{ src: loadImage("assets/explosions/Ship6_Explosion/Ship6_Explosion_021.png") }
 		]
 
 		this.playerExplosionImage = [
-			{ src: loadImage("../assets/explosions/player-explosion/Explosion3_1.png") },
-			{ src: loadImage("../assets/explosions/player-explosion/Explosion3_2.png") },
-			{ src: loadImage("../assets/explosions/player-explosion/Explosion3_3.png") },
-			{ src: loadImage("../assets/explosions/player-explosion/Explosion3_4.png") },
-			{ src: loadImage("../assets/explosions/player-explosion/Explosion3_5.png") },
-			{ src: loadImage("../assets/explosions/player-explosion/Explosion3_6.png") },
-			{ src: loadImage("../assets/explosions/player-explosion/Explosion3_7.png") },
-			{ src: loadImage("../assets/explosions/player-explosion/Explosion3_8.png") },
-			{ src: loadImage("../assets/explosions/player-explosion/Explosion3_9.png") },
-			{ src: loadImage("../assets/explosions/player-explosion/Explosion3_10.png") },
-			{ src: loadImage("../assets/explosions/player-explosion/Explosion3_11.png") },
-			{ src: loadImage("../assets/explosions/player-explosion/Explosion3_12.png") }
+			{ src: loadImage("assets/explosions/player-explosion/Explosion3_1.png") },
+			{ src: loadImage("assets/explosions/player-explosion/Explosion3_2.png") },
+			{ src: loadImage("assets/explosions/player-explosion/Explosion3_3.png") },
+			{ src: loadImage("assets/explosions/player-explosion/Explosion3_4.png") },
+			{ src: loadImage("assets/explosions/player-explosion/Explosion3_5.png") },
+			{ src: loadImage("assets/explosions/player-explosion/Explosion3_6.png") },
+			{ src: loadImage("assets/explosions/player-explosion/Explosion3_7.png") },
+			{ src: loadImage("assets/explosions/player-explosion/Explosion3_8.png") },
+			{ src: loadImage("assets/explosions/player-explosion/Explosion3_9.png") },
+			{ src: loadImage("assets/explosions/player-explosion/Explosion3_10.png") },
+			{ src: loadImage("assets/explosions/player-explosion/Explosion3_11.png") },
+			{ src: loadImage("assets/explosions/player-explosion/Explosion3_12.png") }
 		]
 
 		this.playerHealthImage = [
-			{ src: loadImage("../assets/life/heart.png") }
+			{ src: loadImage("assets/life/heart.png") }
 		]
 
 		this.soundeffects = [
-			{ src: loadSound("../assets/soundeffects/mixkit-short-laser-gun-shot-1670.wav") },
-			{ src: loadSound("../assets/soundeffects/Hitmarker - Sound Effect.mp3") },
-			{ src: loadSound("../assets/soundeffects/futuristic-smg-sound-effect-100378.mp3") },
-			{ src: loadSound("../assets/soundeffects/bfg-laser-89662.mp3") }
+			{ src: loadSound("assets/soundeffects/mixkit-short-laser-gun-shot-1670.wav") },
+			{ src: loadSound("assets/soundeffects/Hitmarker - Sound Effect.mp3") },
+			{ src: loadSound("assets/soundeffects/futuristic-smg-sound-effect-100378.mp3") },
+			{ src: loadSound("assets/soundeffects/bfg-laser-89662.mp3") }
 		]
 	}
 

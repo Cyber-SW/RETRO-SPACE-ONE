@@ -33,9 +33,9 @@ buttonLosingscreen.addEventListener("click", createNewGame)
 function setup() {
 	createCanvas(1140, 1140)
 
-	orbitronBlack = loadFont("../assets/font/Orbitron-Black.ttf")
-	music = lobbyMusic = loadSound("../assets/music/Synthwave goose - Blade Runner 2049.mp3")
-	music2 = lobbyMusic = loadSound("../assets/music/Future Club.mp4")
+	orbitronBlack = loadFont("assets/font/Orbitron-Black.ttf")
+	music = lobbyMusic = loadSound("assets/music/Synthwave goose - Blade Runner 2049.mp3")
+	music2 = lobbyMusic = loadSound("assets/music/Future Club.mp4")
 }
 
 function createGame() {
