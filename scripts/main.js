@@ -31,10 +31,10 @@ buttonLosingscreen.addEventListener("click", createNewGame)
 
 // Setup game
 function setup() {
-	let canvasWidth = windowWidth / 1.68
-	let canvasHeight= windowHeight / 1.68
+	let canvasWidth = windowHeight / 0.94
+	let canvasHeight= windowHeight / 0.94
 
-	createCanvas(windowWidth, windowHeight)
+	createCanvas(canvasWidth, canvasHeight)
 
 	orbitronBlack = loadFont("assets/font/Orbitron-Black.ttf")
 	music = lobbyMusic = loadSound("assets/music/Synthwave goose - Blade Runner 2049.mp3")
