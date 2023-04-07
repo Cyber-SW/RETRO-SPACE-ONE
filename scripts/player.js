@@ -152,7 +152,7 @@ class Player {
     playerScore() {
         if (gameStarted) {
             let displayScore = `${this.score}`
-            let displayScoreWidth = (WIDTH / 100) * 90
+            let displayScoreWidth = (WIDTH / 10)
             let displayScoreHeight = (HEIGHT / 10)
 
             text(displayScore, displayScoreWidth, displayScoreHeight)
@@ -166,12 +166,12 @@ class Player {
     displayPlayerHealth() {
         if (gameStarted) {
             let displayHealth = `${this.health}x`
-            let displayHealthWidth = (WIDTH / 10)
+            let displayHealthWidth = (WIDTH / 100) * 90
             let displayHealthHeight = (HEIGHT / 10)
 
             image(game.playerHealthImage[0].src, displayHealthWidth / 2, displayHealthHeight / 2, 84, 84)
 
-            text(displayHealth, displayHealthWidth, displayHealthHeight / 2)
+            text(displayHealth, displayHealthWidth, displayHealthHeight)
             textFont(orbitronBlack)
             fill(255, 255, 255)
             textAlign(LEFT, BASELINE)
