@@ -33,8 +33,8 @@ buttonLosingscreen.addEventListener("click", createNewGame)
 
 // Setup game
 function setup() {
-	canvasWidth = windowHeight * 0.99
-	canvasHeight = windowHeight * 0.99
+	canvasWidth = windowHeight * 0.98
+	canvasHeight = windowHeight * 0.98
 
 	createCanvas(canvasWidth, canvasHeight)
 
