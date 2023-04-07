@@ -31,7 +31,7 @@ buttonLosingscreen.addEventListener("click", createNewGame)
 
 // Setup game
 function setup() {
-	let canvasWidth = windowHeight / 0.94
+	let canvasWidth = windowWidth / 1.68
 	let canvasHeight= windowHeight / 0.94
 
 	createCanvas(canvasWidth, canvasHeight)
