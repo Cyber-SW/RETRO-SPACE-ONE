@@ -3,19 +3,12 @@ class Game {
 		this.background = new Background()
 		this.player = new Player()
 		
-		this.smallEnemy = []
+		this.enemys = []
 
-		this.weaponGreenBulletsLeft = []
-		this.weaponGreenBulletsRight = []
-
-		this.weaponRedBulletsLeft = []
-		this.weaponRedBulletsRight = []
-
-		this.weaponOrangeBulletsLeft = []
-		this.weaponOrangeBulletsLeft2 = []
-		this.weaponOrangeBulletsRight = []
-		this.weaponOrangeBulletsRight2 = []
-
+		this.weaponGreenBullets = []
+		this.weaponRedBullets = []
+		this.weaponOrangeBullets = []
+		
 		this.backgroundImage
 		this.playerImage
 		this.enemyImage
@@ -122,20 +115,16 @@ class Game {
 		this.background.draw()
 		this.soundeffects[3].src.setVolume(0.3)
 
-		//SMALLENEMY SPAWN
+		//ENEMY SPAWN
 		if (gameStarted && frameCount % 20 === 0) {
-            this.smallEnemy.push(new Smallenemy(this.enemyImage[0].src, this.explosionImage))
+            this.enemys.push(new Smallenemy(this.enemyImage[0].src, this.explosionImage))
         }
 
 		if (gameStarted && frameCount % 100 === 0) {
-            this.smallEnemy.push(new Bigenemy(this.enemyImage[1].src, this.bigExplosionImage))
+            this.enemys.push(new Bigenemy(this.enemyImage[1].src, this.bigExplosionImage))
         }
 
-		this.smallEnemy.forEach(function(enemy) {
-            enemy.draw()
-        })
-
-		this.smallEnemy.forEach(function(enemy) {
+		this.enemys.forEach(function(enemy) {
             enemy.draw()
         })
 
@@ -144,193 +133,81 @@ class Game {
 		}
 
 		// GREEN SHIP WEAPON
-		this.weaponGreenBulletsLeft.forEach(function(bullet) {
+		this.weaponGreenBullets.forEach(function(bullet) {
 			bullet.draw()
 		})
 
-		this.weaponGreenBulletsRight.forEach(function(bullet) {
-			bullet.draw()
-		})
-
-		this.weaponGreenBulletsLeft.forEach((bullet, bulletIndex) => {
-			this.smallEnemy.forEach((smallEnemy, smallEnemyIndex) => {
-				if (bullet.bulletCollision(smallEnemy)) {
-					this.weaponGreenBulletsLeft.splice(bulletIndex, 1)
-					this.smallEnemy[smallEnemyIndex].health -= 1
-					if (smallEnemy.health <= 0 && smallEnemy.initialDeadFrameCount < frameCount + 12) {
-						this.smallEnemy.splice(smallEnemyIndex, 1)
+		this.weaponGreenBullets.forEach((bullet, bulletIndex) => {
+			this.enemys.forEach((enemy, enemyIndex) => {
+				if (bullet.bulletCollision(enemy)) {
+					this.weaponGreenBullets.splice(bulletIndex, 1)
+					this.enemys[enemyIndex].health -= 1
+					if (enemy.health <= 0 && enemy.initialDeadFrameCount < frameCount + 11) {
+						this.enemys.splice(enemyIndex, 1)
 						game.soundeffects[1].src.play()
-						if (smallEnemy.enemyType === "small") { this.player.score += 100 }
-						if (smallEnemy.enemyType === "big") { this.player.score += 500 }
+						if (enemy.enemyType === "small") { this.player.score += 100 }
+						if (enemy.enemyType === "big") { this.player.score += 500 }
 					}
 				}
-				if (bullet.y < -100) {
-					this.weaponGreenBulletsLeft.splice(bulletIndex, 1)
-				}
 			})
-		})
-
-		this.weaponGreenBulletsRight.forEach((bullet, bulletIndex) => {
-			this.smallEnemy.forEach((smallEnemy, smallEnemyIndex) => {
-				if (bullet.bulletCollision(smallEnemy)) {
-					this.weaponGreenBulletsRight.splice(bulletIndex, 1)
-					this.smallEnemy[smallEnemyIndex].health -= 1
-					if (smallEnemy.health <= 0 && smallEnemy.initialDeadFrameCount < frameCount + 12) {
-						this.smallEnemy.splice(smallEnemyIndex, 1)
-						game.soundeffects[1].src.play()
-						if (smallEnemy.enemyType === "small") { this.player.score += 100 }
-						if (smallEnemy.enemyType === "big") { this.player.score += 500 }
-					}
-				}
-				if (bullet.y < -100) {
-					this.weaponGreenBulletsRight.splice(bulletIndex, 1)
-				}
-			})
+			if (bullet.y < -100) {
+				this.weaponGreenBullets.splice(bulletIndex, 1)
+			}
 		})
 
 		// RED SHIP WEAPON
-		this.weaponRedBulletsLeft.forEach(function(bullet) {
+		this.weaponRedBullets.forEach(function(bullet) {
 			bullet.draw()
 		})
 
-		this.weaponRedBulletsRight.forEach(function(bullet) {
-			bullet.draw()
-		})
-
-		this.weaponRedBulletsLeft.forEach((bullet, bulletIndex) => {
+		this.weaponRedBullets.forEach((bullet, bulletIndex) => {
 			if (bullet.initialFrameCount +3 < frameCount) {
-				this.weaponRedBulletsLeft.splice(bulletIndex, 1)
+				this.weaponRedBullets.splice(bulletIndex, 1)
 			}
 		})
 
-		this.weaponRedBulletsRight.forEach((bullet, bulletIndex) => {
-			if (bullet.initialFrameCount +3 < frameCount) {
-				this.weaponRedBulletsRight.splice(bulletIndex, 1)
-			}
-		})
-
-		this.weaponRedBulletsLeft.forEach((bullet) => {
-			this.smallEnemy.forEach((smallEnemy, smallEnemyIndex) => {
-				if (bullet.bulletCollision(smallEnemy)) {
-					smallEnemy.health = 0
-					if (smallEnemy.health <= 0 && smallEnemy.initialDeadFrameCount < frameCount + 12) {
-						this.smallEnemy.splice(smallEnemyIndex, 1)
-						if (smallEnemy.enemyType === "small") { this.player.score += 100 }
-						if (smallEnemy.enemyType === "big") { this.player.score += 500 }
-					}
-				}
-			})
-		})
-
-		this.weaponRedBulletsRight.forEach((bullet) => {
-			this.smallEnemy.forEach((smallEnemy, smallEnemyIndex) => {
-				if (bullet.bulletCollision(smallEnemy)) {
-					smallEnemy.health = 0
-					if (smallEnemy.health <= 0 && smallEnemy.initialDeadFrameCount < frameCount + 12) {
-						this.smallEnemy.splice(smallEnemyIndex, 1)
-						if (smallEnemy.enemyType === "small") { this.player.score += 100 }
-						if (smallEnemy.enemyType === "big") { this.player.score += 500 }
+		this.weaponRedBullets.forEach((bullet) => {
+			this.enemys.forEach((enemy, enemyIndex) => {
+				if (bullet.bulletCollision(enemy)) {
+					enemy.health = 0
+					if (enemy.health <= 0 && enemy.initialDeadFrameCount < frameCount + 11) {
+						this.enemys.splice(enemyIndex, 1)
+						if (enemy.enemyType === "small") { this.player.score += 100 }
+						if (enemy.enemyType === "big") { this.player.score += 500 }
 					}
 				}
 			})
 		})
 
 		// ORANGE SHIP WEAPON
-		this.weaponOrangeBulletsLeft.forEach(function(bullet) {
+		this.weaponOrangeBullets.forEach(function(bullet) {
 			bullet.draw()
 		})
 
-		this.weaponOrangeBulletsLeft2.forEach(function(bullet) {
-			bullet.draw()
-		})
-
-		this.weaponOrangeBulletsRight.forEach(function(bullet) {
-			bullet.draw()
-		})
-
-		this.weaponOrangeBulletsRight2.forEach(function(bullet) {
-			bullet.draw()
-		})
-
-		this.weaponOrangeBulletsLeft.forEach((bullet, bulletIndex) => {
-			this.smallEnemy.forEach((smallEnemy, smallEnemyIndex) => {
-				if (bullet.bulletCollision(smallEnemy)) {
-					this.weaponGreenBulletsLeft.splice(bulletIndex, 1)
-					this.smallEnemy[smallEnemyIndex].health -= 1
-					if (smallEnemy.health <= 0 && smallEnemy.initialDeadFrameCount < frameCount + 12) {
-						this.smallEnemy.splice(smallEnemyIndex, 1)
+		this.weaponOrangeBullets.forEach((bullet, bulletIndex) => {
+			this.enemys.forEach((enemy, enemyIndex) => {
+				if (bullet.bulletCollision(enemy)) {
+					this.weaponOrangeBullets.splice(bulletIndex, 1)
+					this.enemys[enemyIndex].health -= 3
+					if (enemy.health <= 0 && enemy.initialDeadFrameCount < frameCount + 11) {
+						this.enemys.splice(enemyIndex, 1)
 						game.soundeffects[1].src.play()
-						if (smallEnemy.enemyType === "small") { this.player.score += 100 }
-						if (smallEnemy.enemyType === "big") { this.player.score += 500 }
+						if (enemy.enemyType === "small") { this.player.score += 100 }
+						if (enemy.enemyType === "big") { this.player.score += 500 }
 					}
 				}
-				if (bullet.y < -100) {
-					this.weaponGreenBulletsLeft.splice(bulletIndex, 1)
-				}
 			})
-		})
-
-		this.weaponOrangeBulletsLeft2.forEach((bullet, bulletIndex) => {
-			this.smallEnemy.forEach((smallEnemy, smallEnemyIndex) => {
-				if (bullet.bulletCollision(smallEnemy)) {
-					this.weaponOrangeBulletsLeft2.splice(bulletIndex, 1)
-					this.smallEnemy[smallEnemyIndex].health -= 1
-					if (smallEnemy.health <= 0 && smallEnemy.initialDeadFrameCount < frameCount + 12) {
-						this.smallEnemy.splice(smallEnemyIndex, 1)
-						game.soundeffects[1].src.play()
-						if (smallEnemy.enemyType === "small") { this.player.score += 100 }
-						if (smallEnemy.enemyType === "big") { this.player.score += 500 }
-					}
-				}
-				if (bullet.y < -100) {
-					this.weaponOrangeBulletsLeft2.splice(bulletIndex, 1)
-				}
-			})
-		})
-		
-		this.weaponOrangeBulletsRight.forEach((bullet, bulletIndex) => {
-			this.smallEnemy.forEach((smallEnemy, smallEnemyIndex) => {
-				if (bullet.bulletCollision(smallEnemy)) {
-					this.weaponOrangeBulletsRight.splice(bulletIndex, 1)
-					this.smallEnemy[smallEnemyIndex].health -= 1
-					if (smallEnemy.health <= 0 && smallEnemy.initialDeadFrameCount < frameCount + 12) {
-						this.smallEnemy.splice(smallEnemyIndex, 1)
-						game.soundeffects[1].src.play()
-						if (smallEnemy.enemyType === "small") { this.player.score += 100 }
-						if (smallEnemy.enemyType === "big") { this.player.score += 500 }
-					}
-				}
-				if (bullet.y < -100) {
-					this.weaponOrangeBulletsRight.splice(bulletIndex, 1)
-				}
-			})
-		})
-
-		this.weaponOrangeBulletsRight2.forEach((bullet, bulletIndex) => {
-			this.smallEnemy.forEach((smallEnemy, smallEnemyIndex) => {
-				if (bullet.bulletCollision(smallEnemy)) {
-					this.weaponOrangeBulletsRight2.splice(bulletIndex, 1)
-					this.smallEnemy[smallEnemyIndex].health -= 1
-					if (smallEnemy.health <= 0 && smallEnemy.initialDeadFrameCount < frameCount + 12) {
-						this.smallEnemy.splice(smallEnemyIndex, 1)
-						game.soundeffects[1].src.play()
-						if (smallEnemy.enemyType === "small") { this.player.score += 100 }
-						if (smallEnemy.enemyType === "big") { this.player.score += 500 }
-					}
-				}
-				if (bullet.y < -100) {
-					this.weaponOrangeBulletsRight2.splice(bulletIndex, 1)
-				}
-			})
+			if (bullet.y < -100) {
+				this.weaponOrangeBullets.splice(bulletIndex, 1)
+			}
 		})
 
 		// PLAYER COLLISION
-		this.smallEnemy.forEach((smallEnemy, smallEnemyIndex) => {
-			if (this.player.playerCollision(smallEnemy)) {
-				this.smallEnemy[smallEnemyIndex].health = 0
-				console.log(this.player.health)
-				if (smallEnemy.initialDeadFrameCount < frameCount + 12)
-				this.smallEnemy.splice(smallEnemyIndex, 1)
+		this.enemys.forEach((enemy, enemyIndex) => {
+			if (this.player.playerCollision(enemy)) {
+				this.enemys[enemyIndex].health = 0
+				if (enemy.initialDeadFrameCount < frameCount + 11)
+				this.enemys.splice(enemyIndex, 1)
 			}
 		})
 

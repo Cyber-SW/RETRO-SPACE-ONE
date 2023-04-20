@@ -4,7 +4,7 @@ class Player {
 		this.height = 280
 		this.x = (WIDTH / 2) - (this.width /2)
 		this.y = HEIGHT / 2 
-        this.health = this.selectedHealth 
+        this.health
 		this.score = 0
 	}
     
@@ -34,8 +34,8 @@ class Player {
 		}
 
         if (keyIsDown(32) && buttonGreen === "on") {
-            if (frameCount % 5 === 0) this.useWeaponGreen()
-            if (frameCount % 5 === 0) game.soundeffects[0].src.play()
+            if (frameCount % 2 === 0) this.useWeaponGreen()
+            if (frameCount % 2 === 0) game.soundeffects[0].src.play()
         }
 
         if (keyIsDown(32) && buttonRed === "on") {
@@ -44,8 +44,8 @@ class Player {
         }
 
         if (keyIsDown(32) && buttonOrange === "on") {
-            if (frameCount % 15 === 0) this.useWeaponOrange()
-            if (frameCount % 15 === 0) game.soundeffects[2].src.play()
+            if (frameCount % 10 === 0) this.useWeaponOrange()
+            if (frameCount % 10 === 0) game.soundeffects[2].src.play()
         }
 
         if (this.health <= 0 && gameStarted === true) {
@@ -91,13 +91,17 @@ class Player {
     useWeaponGreen() {
         let playerPositionX = this.x
         let playerPositionY = this.y
+        let weaponPositionX = 0
+
+
+        if (frameCount % 4 === 0) {
+            weaponPositionX += 37
+        } else {
+            weaponPositionX += 83
+        }
 
         game.playerWeaponGreen.forEach(function(bullet) {
-            game.weaponGreenBulletsLeft.push(new WeaponGreenLeft(bullet.src, playerPositionX, playerPositionY))
-        })
-
-        game.playerWeaponGreen.forEach(function(bullet) {
-            game.weaponGreenBulletsRight.push(new WeaponGreenRight(bullet.src, playerPositionX, playerPositionY))
+            game.weaponGreenBullets.push(new WeaponGreen(bullet.src, playerPositionX, playerPositionY, weaponPositionX))
         })
     }
 
@@ -106,42 +110,43 @@ class Player {
         let playerPositionY = this.y
 
         game.playerWeaponRed.forEach(function(bullet) {
-            game.weaponRedBulletsLeft.push(new WeaponRedLeft(bullet.src, playerPositionX, playerPositionY))
-        })
-
-        game.playerWeaponRed.forEach(function(bullet) {
-            game.weaponRedBulletsRight.push(new WeaponRedRight(bullet.src, playerPositionX, playerPositionY))
+            game.weaponRedBullets.push(new WeaponRed(bullet.src, playerPositionX, playerPositionY))
         })
     }
 
     useWeaponOrange() {
         let playerPositionX = this.x
         let playerPositionY = this.y
+        let weaponPositionX1 = 0
+        let weaponPositionX2 = 0
+        let weaponOption
+
+        if (frameCount % 20 === 0) {
+            weaponOption = "inner"
+            weaponPositionX1 -= 15
+            weaponPositionX2 += 40
+        } else {
+            weaponOption = "outer"
+            weaponPositionX1 -= 30
+            weaponPositionX2 += 55
+        }
 
         game.playerWeaponOrange.forEach(function(bullet) {
-            game.weaponOrangeBulletsLeft.push(new WeaponOrangeLeft(bullet.src, playerPositionX, playerPositionY))
+            game.weaponOrangeBullets.push(new WeaponOrange(bullet.src, playerPositionX, playerPositionY, weaponPositionX1, weaponOption))
         })
 
         game.playerWeaponOrange.forEach(function(bullet) {
-            game.weaponOrangeBulletsLeft2.push(new WeaponOrangeLeft2(bullet.src, playerPositionX, playerPositionY))
-        })
-
-        game.playerWeaponOrange.forEach(function(bullet) {
-            game.weaponOrangeBulletsRight.push(new WeaponOrangeRight(bullet.src, playerPositionX, playerPositionY))
-        })
-
-        game.playerWeaponOrange.forEach(function(bullet) {
-            game.weaponOrangeBulletsRight2.push(new WeaponOrangeRight2(bullet.src, playerPositionX, playerPositionY))
+            game.weaponOrangeBullets.push(new WeaponOrange(bullet.src, playerPositionX, playerPositionY, weaponPositionX2, weaponOption))
         })
     }
 
-    playerCollision(smallEnemyInfo) { 
-        let smallEnemyX = smallEnemyInfo.x + smallEnemyInfo.width /2
-        let smallEnemyY = smallEnemyInfo.y + smallEnemyInfo.height /2
+    playerCollision(enemyInfo) { 
+        let enemyX = enemyInfo.x + enemyInfo.width /2
+        let enemyY = enemyInfo.y + enemyInfo.height /2
         let playerX = this.x + this.width / 2
         let playerY = this.y + this.height / 2
         
-        if (dist(smallEnemyX, smallEnemyY, playerX, playerY) > 100) {
+        if (dist(enemyX, enemyY, playerX, playerY) > 100) {
             return false
         } else {
             this.health -= 0.5
@@ -185,6 +190,8 @@ class Player {
 	    buttonRed = "off"
 	    buttonOrange = "off"
         game.enemyVelocity = 2
+        this.x = (WIDTH / 2) - (this.width /2)
+		this.y = HEIGHT / 2
         displayLosingScreen()
     }
 }

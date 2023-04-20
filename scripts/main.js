@@ -150,5 +150,4 @@ function displayLosingScreen() {
 
 function draw() {
 	game.draw()
-
 }
