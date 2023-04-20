@@ -42,8 +42,8 @@ class Player {
         }
 
         if (keyIsDown(32) && buttonRed === "on") {
-            if (frameCount % 30 === 0) this.useWeaponRed()
-            if (frameCount % 30 === 0) game.soundeffects[3].src.play()
+            if (frameCount % 20 === 0) this.useWeaponRed()
+            if (frameCount % 20 === 0) game.soundeffects[3].src.play()
         }
 
         if (keyIsDown(32) && buttonOrange === "on") {
