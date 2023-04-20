@@ -21,8 +21,10 @@ const shipAlign = document.querySelector(".ship-spec-align-hide")
 
 let buttonGreen = document.querySelector(".btn-green")
 buttonGreen.addEventListener("click", shipGreen)
+
 let buttonRed = document.querySelector(".btn-red")
 buttonRed.addEventListener("click", shipRed)
+
 let buttonOrange = document.querySelector(".btn-orange")
 buttonOrange.addEventListener("click", shipOrange)
 

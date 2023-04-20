@@ -1,54 +1,70 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link rel="stylesheet" href="style/style.css" />
-        <script src="https://cdn.jsdelivr.net/npm/p5@1.6.0/lib/p5.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.6.0/addons/p5.sound.js" integrity="sha512-+UacraOiGydEqhxuA/Jr2dziKCJLnNbwtyKbw0rYdFriqf7JO4NtYNe4t7xm8Bx6LQ3W7+wZwePQhBFSYXlYaA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-        <title>RETRO SPACE ONE</title>
-    </head>
-    <body>
-        <div class="headline-container">
-            <h1 class="headline">RETRO SPACE</h1>
-            <h2 class="subline">ONE</h2>
-        </div>
-        
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style/style.css" />
+    <script src="https://cdn.jsdelivr.net/npm/p5@1.6.0/lib/p5.js"></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.6.0/addons/p5.sound.js"
+      integrity="sha512-+UacraOiGydEqhxuA/Jr2dziKCJLnNbwtyKbw0rYdFriqf7JO4NtYNe4t7xm8Bx6LQ3W7+wZwePQhBFSYXlYaA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <title>RETRO SPACE ONE</title>
+  </head>
+  <body>
+    <div class="headline-container">
+      <h1 class="headline">RETRO SPACE</h1>
+      <h2 class="subline">ONE</h2>
+    </div>
 
-        <div class="start-btn-show">
-            <button type="button">START GAME</button>
-        </div>
+    <div class="start-btn-show">
+      <button type="button">START GAME</button>
+    </div>
 
-        <div class="choose-ship-container-hide">
-            <h2>CHOOSE YOUR SHIP CAPTAIN!</h2>
-            <h4>Choose wisely...</h4>
-        </div>
+    <div class="choose-ship-container-hide">
+      <h2>CHOOSE YOUR SHIP CAPTAIN!</h2>
+      <h4>Choose wisely...</h4>
+    </div>
 
-        <div class="container-hide">
-            <div class="btn-container-hide">
-                <div class="btn-green"><button type="button">DESTROYER</button></div>
-                <div class="btn-red"><button type="button">BATTLESHIP</button></div>
-                <div class="btn-orange"><button type="button">DREADNOUGHT</button></div>
-            </div>
-            <div class="ship-spec-align-hide">
-                <div class="ship-green-spec"><li>Health:❤️❤️❤️</li><li>Speed:▶️▶️▶️▶️▶️</li><li>Weapon: Minigun</li></div>
-                <div class="ship-red-spec"><li>Health:❤️❤️❤️❤️❤️</li><li>Speed:▶️▶️▶️</li><li>Weapon: Railgun</li></div>
-                <div class="ship-orange-spec"><li>Health:❤️❤️❤️❤️</li><li>Speed:▶️▶️▶️▶️</li><li>Weapon: Blaster</li></div>
-            </div>
+    <div class="container-hide">
+      <div class="btn-container-hide">
+        <div class="btn-green"><button type="button">DESTROYER</button></div>
+        <div class="btn-red"><button type="button">BATTLESHIP</button></div>
+        <div class="btn-orange"><button type="button">DREADNOUGHT</button></div>
+      </div>
+      <div class="ship-spec-align-hide">
+        <div class="ship-green-spec">
+          <li>Health:❤️❤️❤️</li>
+          <li>Speed:▶️▶️▶️▶️▶️</li>
+          <li>Weapon: Minigun</li>
         </div>
-        
-        <div class="losingscreen-container-hide">
-            <h2>CAPTAINS SCORE</h2>
-            <h3 class="show-final-score"></h3>
-            <button class="btn-losingscreen" type="button">TRY AGAIN</button>
+        <div class="ship-red-spec">
+          <li>Health:❤️❤️❤️❤️❤️</li>
+          <li>Speed:▶️▶️▶️</li>
+          <li>Weapon: Railgun</li>
         </div>
+        <div class="ship-orange-spec">
+          <li>Health:❤️❤️❤️❤️</li>
+          <li>Speed:▶️▶️▶️▶️</li>
+          <li>Weapon: Blaster</li>
+        </div>
+      </div>
+    </div>
 
-        <script src="scripts/constants.js"></script>
-        <script src="scripts/background.js"></script>
-        <script src="scripts/weapon.js"></script>
-        <script src="scripts/enemy.js"></script>
-        <script src="scripts/player.js"></script>
-        <script src="scripts/game.js"></script>
-        <script src="scripts/main.js"></script>
-    </body>
+    <div class="losingscreen-container-hide">
+      <h2>CAPTAINS SCORE</h2>
+      <h3 class="show-final-score"></h3>
+      <button class="btn-losingscreen" type="button">TRY AGAIN</button>
+    </div>
+
+    <script src="scripts/constants.js"></script>
+    <script src="scripts/background.js"></script>
+    <script src="scripts/weapon.js"></script>
+    <script src="scripts/enemy.js"></script>
+    <script src="scripts/player.js"></script>
+    <script src="scripts/game.js"></script>
+    <script src="scripts/main.js"></script>
+  </body>
 </html>
