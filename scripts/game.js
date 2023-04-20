@@ -2,29 +2,35 @@ class Game {
 	constructor() {
 		this.background = new Background()
 		this.player = new Player()
-		
 		this.enemys = []
 
+		//PROJECTILE STORAGE
 		this.weaponGreenBullets = []
 		this.weaponRedBullets = []
 		this.weaponOrangeBullets = []
 		
-		this.backgroundImage
-		this.playerImage
-		this.enemyImage
+		//PROJECTILE IMAGES
 		this.playerWeaponGreen
 		this.playerWeaponRed
 		this.playerWeaponOrange
+
+		//GAME IMAGES
+		this.backgroundImage
+		this.playerImage
+		this.enemyImage
 		
+		//IMAGES FOR EXPLOSION ANIMATION
 		this.explosionImage
 		this.playerExplosionImage
 		this.playerHealthImage
 
 		this.soundeffects
 		
+		//OVER TIME INCREASING GAME DIFFICULTY
 		this.enemyVelocity = 2
 	}
 	
+	//LOAD GAME ASSETS
 	preload() {
 		this.backgroundImage = [
 			{ src: loadImage("assets/bg/space-bg.png"), y: 0, speed: 1 },

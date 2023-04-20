@@ -9,6 +9,7 @@ class Player {
 	}
     
 	draw() {
+        //PLAYER IMAGE DEPENDING ON PLAYER SHIP DECISION
         if (buttonGreen === "on") {
             image(game.playerImage[0].src, this.x, this.y, this.width, this.height)
         } else if (buttonRed === "on") {
@@ -17,6 +18,7 @@ class Player {
             image(game.playerImage[2].src, this.x, this.y, this.width -15, this.height -15)
         }
 
+        //PLAYER MOVEMENT KEYS
         if (keyIsDown(65)) {
 			if (this.x > 0) this.moveLeft()
 		}
@@ -33,6 +35,7 @@ class Player {
 			if (this.y < height - this.height) this.moveDown()
 		}
 
+        //PLAYER WEAPON KEYS
         if (keyIsDown(32) && buttonGreen === "on") {
             if (frameCount % 2 === 0) this.useWeaponGreen()
             if (frameCount % 2 === 0) game.soundeffects[0].src.play()
@@ -48,6 +51,7 @@ class Player {
             if (frameCount % 10 === 0) game.soundeffects[2].src.play()
         }
 
+        //PLAYER DEAD ANIMATION
         if (this.health <= 0 && gameStarted === true) {
             image(game.playerExplosionImage[0].src, this.x, this.y, this.width, this.height)
             if (frameCount % 2 === 0) { image(game.playerExplosionImage[1].src, this.x -10, this.y -10, this.width +10, this.height +10) }
@@ -64,6 +68,7 @@ class Player {
         }
 	}
 
+    //PLAYER MOVEMENT DEPENDING ON PLAYER SHIP DECISION
     moveRight() {
 		if (buttonGreen === "on") { this.x += 10 }
         if (buttonRed === "on") { this.x += 6 }
@@ -88,6 +93,7 @@ class Player {
         if (buttonOrange === "on") { this.y += 8 }
 	}
     
+    //USE PLAYER GREEN WEAPON
     useWeaponGreen() {
         let playerPositionX = this.x
         let playerPositionY = this.y
@@ -105,6 +111,7 @@ class Player {
         })
     }
 
+    //USE PLAYER RED WEAPON
     useWeaponRed() {
         let playerPositionX = this.x
         let playerPositionY = this.y
@@ -114,6 +121,7 @@ class Player {
         })
     }
 
+    //USE PLAYER ORANGE WEAPON
     useWeaponOrange() {
         let playerPositionX = this.x
         let playerPositionY = this.y
@@ -140,6 +148,7 @@ class Player {
         })
     }
 
+    //PLAYER COLLISION WITH ENEMY
     playerCollision(enemyInfo) { 
         let enemyX = enemyInfo.x + enemyInfo.width /2
         let enemyY = enemyInfo.y + enemyInfo.height /2

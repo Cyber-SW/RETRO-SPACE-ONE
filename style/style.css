@@ -39,6 +39,7 @@ body {
   background-color: #212729;
 }
 
+/*STARTING SCREEN*/
 .headline-container {
   display: flex;
   flex-direction: column;
@@ -88,7 +89,10 @@ body {
 .start-btn-hide {
   display: none;
 }
+/*STARTING SCREEN*/
 
+
+/*CHOOSE SHIP SCREEN*/
 .btn-container-show {
   display: flex;
   flex-direction: row;
@@ -219,7 +223,10 @@ body {
 li {
   margin-bottom: 1rem;
 }
+/*CHOOSE SHIP SCREEN*/
 
+
+/*LOSING SCREEN*/
 .losingscreen-container-show {
   display: flex;
   flex-direction: column;
@@ -258,3 +265,4 @@ li {
 .losingscreen-container-hide {
   display: none;
 }
+/*LOSING SCREEN*/

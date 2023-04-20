@@ -13,6 +13,7 @@ class WeaponGreen {
         image(this.image, this.x, this.y, this.width, this.height)
     }
 
+    //GREEN BULLET COLLISION WITH ENEMY
     bulletCollision(enemyInfo) {
         let enemyX = enemyInfo.x + enemyInfo.width /2
         let enemyY = enemyInfo.y + enemyInfo.height /2
@@ -42,6 +43,7 @@ class WeaponRed {
         image(this.image, this.x + 106, this.y, this.width, this.height)
     }
 
+    //RED BULLET COLLISION WITH ENEMY
     bulletCollision(enemyInfo) { 
         let enemyX = enemyInfo.x + enemyInfo.width / 2
         let enemyY = enemyInfo.y + enemyInfo.height / 2
@@ -77,6 +79,7 @@ class WeaponOrange {
         }
     }
 
+    //ORANGE BULLET COLLISION WITH ENEMY
     bulletCollision(enemyInfo) { 
         let enemyX = enemyInfo.x + enemyInfo.width /2
         let enemyY = enemyInfo.y + enemyInfo.height /2

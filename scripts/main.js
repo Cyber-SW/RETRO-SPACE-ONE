@@ -5,11 +5,12 @@ let canvasHeight
 let music
 let music2
 
-// Load game assets
+//LOAD GAME ASSETS
 function preload() {
 	game.preload()
 }
 
+//SELECT HTML ELEMENTS BY CLASSES
 const buttonStart = document.querySelector(".start-btn-show")
 buttonStart.addEventListener("click", createGame)
 const headlineStart = document.querySelector(".headline-container")
@@ -33,7 +34,7 @@ const buttonLosingscreen = document.querySelector(".btn-losingscreen")
 buttonLosingscreen.addEventListener("click", createNewGame)
 
 
-// Setup game
+//SETUP GAME
 function setup() {
 	canvasWidth = windowHeight * 0.99
 	canvasHeight = windowHeight * 0.99
@@ -45,6 +46,7 @@ function setup() {
 	music2 = lobbyMusic = loadSound("assets/music/Future Club.mp4")
 }
 
+//SHOW CHOOSE SHIP SCREEN - HIDE STARTING SCREEN 
 function createGame() {
 	buttonStart.classList.toggle("start-btn-hide")
 	headlineStart.classList.toggle("headline-container-hide")
@@ -64,6 +66,7 @@ function createGame() {
 	music.jump(40, 180)
 }
 
+//SHOW CHOOSE SHIP SCREEN AFTER DEATH - HIDE LOSING SCREEN 
 function createNewGame() {
 	buttonLosingsreenContainer.classList.remove("losingscreen-container-show")
 	buttonLosingsreenContainer.classList.toggle("losingscreen-container-hide")
@@ -83,6 +86,7 @@ function createNewGame() {
 	game.player.score = 0
 }
 
+//CHOOSE GREEN SHIP - REMOVE CHOOSE SHIP SCREEN - START GAME
 function shipGreen() {
 	chooseShipContainer.classList.remove("choose-ship-container-show")
 	chooseShipContainer.classList.toggle("choose-ship-container-hide")
@@ -102,6 +106,7 @@ function shipGreen() {
 	music2.jump(5, 270)
 }
 
+//CHOOSE RED SHIP - REMOVE CHOOSE SHIP SCREEN - START GAME
 function shipRed() {
 	chooseShipContainer.classList.remove("choose-ship-container-show")
 	chooseShipContainer.classList.toggle("choose-ship-container-hide")
@@ -121,6 +126,7 @@ function shipRed() {
 	music2.jump(5, 270)
 }
 
+//CHOOSE ORANGE SHIP - REMOVE CHOOSE SHIP SCREEN - START GAME
 function shipOrange() {
 	chooseShipContainer.classList.remove("choose-ship-container-show")
 	chooseShipContainer.classList.toggle("choose-ship-container-hide")

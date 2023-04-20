@@ -17,6 +17,7 @@ class Smallenemy {
         this.y += this.velocity
         image(this.image, this.x, this.y, this.width, this.height)
 
+        //SMALL ENEMY DEATH ANIMATION
         if (this.health <= 0 && this.deadAnimation === true) {
             this.initialDeadFrameCount = frameCount
             image(this.explosionImage[0].src, this.x, this.y + 10, this.width, this.height)
@@ -53,6 +54,7 @@ class Bigenemy {
         this.y += this.velocity
         image(this.image, this.x, this.y, this.width, this.height)
         
+        //BIG ENEMY DEATH ANIMATION
         if (this.health <= 0 && this.deadAnimation === true) {
             this.initialDeadFrameCount = frameCount
             image(this.bigExplosionImage[0].src, this.x, this.y + 10, this.width, this.height)
