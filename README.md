@@ -11,7 +11,7 @@ TECH: P5.Js | JavaScript (ES6) | HTML5 | CSS3
 
 CONTROLS: W = Up | S = Down | A = Left | D = Right | SPACE = Shoot
 
-HINT: Before pressing start wait 3 seconds to guarantee all game assets has been fully loaded!
+HINT: Before pressing start wait 3 seconds to guarantee all game assets have been fully loaded!
 
 FEATURES:
 The player can choose between 3 different ships each with different properties.
